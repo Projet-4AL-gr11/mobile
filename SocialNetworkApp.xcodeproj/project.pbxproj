@@ -14,6 +14,17 @@
 		E068FDC62843AEED00665C6D /* SocialNetworkAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDC52843AEED00665C6D /* SocialNetworkAppTests.swift */; };
 		E068FDD02843AEED00665C6D /* SocialNetworkAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDCF2843AEED00665C6D /* SocialNetworkAppUITests.swift */; };
 		E068FDD22843AEED00665C6D /* SocialNetworkAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDD12843AEED00665C6D /* SocialNetworkAppUITestsLaunchTests.swift */; };
+		E068FDE42843F07000665C6D /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDE32843F07000665C6D /* LoginUIView.swift */; };
+		E068FDE62843F12600665C6D /* InscriptionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDE52843F12500665C6D /* InscriptionUIView.swift */; };
+		E068FDE82843F68B00665C6D /* HomeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDE72843F68B00665C6D /* HomeUIView.swift */; };
+		E068FDEA2843F6C900665C6D /* LeaderBoardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDE92843F6C900665C6D /* LeaderBoardUIView.swift */; };
+		E068FDEC2843F6EF00665C6D /* ProfilUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDEB2843F6EF00665C6D /* ProfilUIView.swift */; };
+		E068FDEE2843F70700665C6D /* EditProfilUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDED2843F70700665C6D /* EditProfilUIView.swift */; };
+		E068FDF02843F73100665C6D /* PipelineUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDEF2843F73100665C6D /* PipelineUIView.swift */; };
+		E068FDF22843F74600665C6D /* FriendListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDF12843F74600665C6D /* FriendListUIView.swift */; };
+		E068FDF42843F75800665C6D /* GroupUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDF32843F75800665C6D /* GroupUIView.swift */; };
+		E068FDF62843F76800665C6D /* ChatUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDF52843F76800665C6D /* ChatUIView.swift */; };
+		E068FDF82843F78200665C6D /* ConversationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDF72843F78200665C6D /* ConversationUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +55,17 @@
 		E068FDCB2843AEED00665C6D /* SocialNetworkAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialNetworkAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E068FDCF2843AEED00665C6D /* SocialNetworkAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNetworkAppUITests.swift; sourceTree = "<group>"; };
 		E068FDD12843AEED00665C6D /* SocialNetworkAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNetworkAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E068FDE32843F07000665C6D /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
+		E068FDE52843F12500665C6D /* InscriptionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionUIView.swift; sourceTree = "<group>"; };
+		E068FDE72843F68B00665C6D /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
+		E068FDE92843F6C900665C6D /* LeaderBoardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardUIView.swift; sourceTree = "<group>"; };
+		E068FDEB2843F6EF00665C6D /* ProfilUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilUIView.swift; sourceTree = "<group>"; };
+		E068FDED2843F70700665C6D /* EditProfilUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilUIView.swift; sourceTree = "<group>"; };
+		E068FDEF2843F73100665C6D /* PipelineUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineUIView.swift; sourceTree = "<group>"; };
+		E068FDF12843F74600665C6D /* FriendListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListUIView.swift; sourceTree = "<group>"; };
+		E068FDF32843F75800665C6D /* GroupUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUIView.swift; sourceTree = "<group>"; };
+		E068FDF52843F76800665C6D /* ChatUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUIView.swift; sourceTree = "<group>"; };
+		E068FDF72843F78200665C6D /* ConversationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +116,12 @@
 		E068FDB32843AEE900665C6D /* SocialNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				E068FDE22843C78900665C6D /* services */,
+				E068FDE12843C77E00665C6D /* repository */,
+				E068FDE02843C77200665C6D /* views */,
+				E068FDDF2843C76600665C6D /* components */,
+				E068FDDE2843C75A00665C6D /* models */,
 				E068FDB42843AEE900665C6D /* SocialNetworkAppApp.swift */,
-				E068FDB62843AEE900665C6D /* ContentView.swift */,
 				E068FDB82843AEED00665C6D /* Assets.xcassets */,
 				E068FDBA2843AEED00665C6D /* Preview Content */,
 			);
@@ -125,6 +151,53 @@
 				E068FDD12843AEED00665C6D /* SocialNetworkAppUITestsLaunchTests.swift */,
 			);
 			path = SocialNetworkAppUITests;
+			sourceTree = "<group>";
+		};
+		E068FDDE2843C75A00665C6D /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E068FDDF2843C76600665C6D /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		E068FDE02843C77200665C6D /* views */ = {
+			isa = PBXGroup;
+			children = (
+				E068FDB62843AEE900665C6D /* ContentView.swift */,
+				E068FDE32843F07000665C6D /* LoginUIView.swift */,
+				E068FDE52843F12500665C6D /* InscriptionUIView.swift */,
+				E068FDE72843F68B00665C6D /* HomeUIView.swift */,
+				E068FDE92843F6C900665C6D /* LeaderBoardUIView.swift */,
+				E068FDEB2843F6EF00665C6D /* ProfilUIView.swift */,
+				E068FDED2843F70700665C6D /* EditProfilUIView.swift */,
+				E068FDEF2843F73100665C6D /* PipelineUIView.swift */,
+				E068FDF12843F74600665C6D /* FriendListUIView.swift */,
+				E068FDF32843F75800665C6D /* GroupUIView.swift */,
+				E068FDF52843F76800665C6D /* ChatUIView.swift */,
+				E068FDF72843F78200665C6D /* ConversationUIView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		E068FDE12843C77E00665C6D /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		E068FDE22843C78900665C6D /* services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +330,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E068FDF02843F73100665C6D /* PipelineUIView.swift in Sources */,
+				E068FDEA2843F6C900665C6D /* LeaderBoardUIView.swift in Sources */,
+				E068FDF22843F74600665C6D /* FriendListUIView.swift in Sources */,
+				E068FDE42843F07000665C6D /* LoginUIView.swift in Sources */,
+				E068FDF62843F76800665C6D /* ChatUIView.swift in Sources */,
+				E068FDE62843F12600665C6D /* InscriptionUIView.swift in Sources */,
+				E068FDF82843F78200665C6D /* ConversationUIView.swift in Sources */,
+				E068FDEC2843F6EF00665C6D /* ProfilUIView.swift in Sources */,
+				E068FDEE2843F70700665C6D /* EditProfilUIView.swift in Sources */,
+				E068FDE82843F68B00665C6D /* HomeUIView.swift in Sources */,
+				E068FDF42843F75800665C6D /* GroupUIView.swift in Sources */,
 				E068FDB72843AEE900665C6D /* ContentView.swift in Sources */,
 				E068FDB52843AEE900665C6D /* SocialNetworkAppApp.swift in Sources */,
 			);
