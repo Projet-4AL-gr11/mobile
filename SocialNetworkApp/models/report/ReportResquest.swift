@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct ReportRequestDto: Identifiable{
+struct ReportRequestDto: Codable{
+    let id : String
     let creatorId: String
     let text: String
     let commentId: String

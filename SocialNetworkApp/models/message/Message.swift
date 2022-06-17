@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Message: Identifiable{
+struct Message: Codable{
      let id: String
      let content: String
      let author: User

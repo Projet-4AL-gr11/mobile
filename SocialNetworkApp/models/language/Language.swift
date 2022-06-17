@@ -6,6 +6,7 @@
 //
 
 import Foundation
-struct Language: Identifiable{
+struct Language: Codable{
+    let id : String
     let name: String
 }

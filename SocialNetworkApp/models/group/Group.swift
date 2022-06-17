@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct Group: Identifiable{
+struct Group: Codable{
+    let id : String
     let name: String
     let users: [User]
-}
+ }

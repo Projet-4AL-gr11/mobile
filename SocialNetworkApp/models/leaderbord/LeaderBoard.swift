@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct LeaderBoard: Identifiable{
+struct LeaderBoard: Codable{
+    let id : String
     let userId: String
     let userEntry: String
     let exerciseId: String

@@ -6,16 +6,9 @@
 //
 
 import Foundation
-struct Event: Identifiable{
+struct Event: Codable{
+    let id : String
     let name: String
-    let name: String
-    let description: String
-    let startDate: Date
-    let endDate: Date
-    let participationLimit?: Int
-    let user: User
-    let group: Group
-    let language: Language
     let description: String
     let startDate: Date
     let endDate: Date
@@ -24,3 +17,5 @@ struct Event: Identifiable{
     let group: Group
     let language: Language
 }
+
+

@@ -8,8 +8,28 @@
 import SwiftUI
 struct ContentView: View {
     var body: some View {
-        VStack{
-            Text("hello")
+        TabView {
+        
+            PipelineUIView() //
+                .tabItem {
+                    Label("accueil", systemImage: "house")
+                }
+            
+            Text("suivi") // to replace with view specically
+                .tabItem {
+                    Label("suivi", systemImage: "list.bullet")
+                }
+            
+            ChatUIView(searchText: "")
+                .tabItem {
+                    Label("discussion", systemImage: "person.2")
+                }
+
+            SettingsView()
+                .tabItem {
+                    Label("reglage", systemImage: "person.circle")
+                }
+            
         }
     }
 }

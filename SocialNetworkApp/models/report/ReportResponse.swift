@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct ReportResponse: Identifiable{
-    let reports: Array<ReportResponse>
+struct ReportResponse: Codable{
+    let id : String
     let count: Int
 }

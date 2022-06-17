@@ -6,9 +6,8 @@
 //
 
 import Foundation
-struct ExerciseTemplate{
-      let id: string;
-      let name: string;
-      let language: Language;
-      let exercise: Exercise;
+struct ExerciseTemplate: Codable{
+      let id: String
+      let name: String
+      let language: Language
 }

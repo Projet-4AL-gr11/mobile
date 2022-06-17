@@ -6,8 +6,7 @@
 //
 
 import Foundation
-struct Conversation; Identifiable{
-      
+struct Conversation: Codable{
     let id: String
     let friendship: FriendfShip
     let messages: [Message]

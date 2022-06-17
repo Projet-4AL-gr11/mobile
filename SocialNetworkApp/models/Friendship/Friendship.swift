@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct FriendfShip: Identifiable{
-    let senderId: String,
-    let userId: String,
+struct FriendfShip: Codable{
+    let id : String
+    let senderId: String
+    let userId: String
 }

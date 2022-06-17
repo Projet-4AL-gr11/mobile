@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct EventSearch: Identifiable{
+struct EventSearch: Codable{
+    let id : String
     let name: String
     let startDate: Date
     let endDate: Date

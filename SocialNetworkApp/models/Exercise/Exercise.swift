@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Exercise: Identifiable{
+struct Exercise: Codable{
       let id: String
       let name: String
       let events: [Event]
