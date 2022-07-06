@@ -3,7 +3,7 @@
 //  SocialNetworkApp
 //
 //  Created by Ahamad Ben on 10/06/2022.
-//
+// https://iosacademy.io/api/v1/courses/index.php
 
 import Foundation
 import SwiftUI
@@ -23,6 +23,39 @@ class Webservice {
 
     func login(username: String, password: String, completion: @escaping(Result < String,
         AuthenticationError > ) -> Void) {
+        
+        let url = URL(string: "http://www.stackoverflow.com")!
+
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            print(String(data: data, encoding: .utf8)!)
+        }
+
+        task.resume()
+        
+ //       func decodeAPI(){
+  //          guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else{return}
+//
+  //          let task = URLSession.shared.dataTask(with: url){
+    //            data, response, error in
+      //
+        //        let decoder = JSONDecoder()
+ 
+          
+        //if let data = data{
+          //          do{
+            //            let tasks = try decoder.decode([Post].self, from: data)
+              //          tasks.forEach{ i in
+                //            print(i.title)
+                  //      }
+                //    }catch{
+                  //      print(error)
+                 //   }
+               // }
+            //}
+            //task.resume()
+
+        //}
 
         
         // Creating the JSON Object here -> unique with each option

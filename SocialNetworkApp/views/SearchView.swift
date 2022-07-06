@@ -8,32 +8,21 @@
 import SwiftUI
 
 struct SearchView: View {
-    @Binding var searchText: String
+    @State var searchText: String
     var body: some View {
-        VStack{
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    
-                    TextField("Search", text: $searchText)
-                        .foregroundColor(.primary)
-                    
-                    Button(action: {
-                        self.searchText = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                    }
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20){
+                    SearchCard(searchText: $searchText)
                 }
-                .padding(15)
-                .foregroundColor(.secondary)
-                .background(Color("color_bg_inverted").opacity(0.05))
-                .clipShape(Capsule())
+                .navigationTitle(Text("recherche"))
+            }
         }
-        .padding(.vertical)
     }
 }
 
-//struct SearchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//       SearchView(searchText: "test")
-//    }
-//}
+struct SearchView_Previews: PreviewProvider {
+    static var previews: some View {
+       SearchView(searchText: "")
+    }
+}

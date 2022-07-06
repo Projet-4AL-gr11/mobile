@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct SocialNetworkAppApp: App {
+    @State var user: User = user1
+    @StateObject var loginManager = LoginManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if loginManager.isLoggedIn {
+                HomeUIView(user: user, loginManager: loginManager)
+                    .transition(.move(edge: .leading))
+            }
+            else{
+                LoginUIView(loginManager: loginManager)
+                    .transition(.move(edge: .leading))
+            }
         }
     }
 }

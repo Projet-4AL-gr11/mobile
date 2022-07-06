@@ -25,7 +25,7 @@ struct postCard: View {
                         .font(.headline)
                     Image("postImage")
                         .resizable()
-                        .frame(width: .infinity, height: .infinity)
+                        .frame(width:300, height: 200)
                         .scaledToFit()
                         .cornerRadius(20)
                     HStack(alignment: .center, spacing: 40){
@@ -67,6 +67,6 @@ struct postCard: View {
 
 struct postCard_Previews: PreviewProvider {
     static var previews: some View {
-        postCard(post: postDtoSample)
+        postCard(post: postDtoSample).preferredColorScheme(.dark)
     }
 }

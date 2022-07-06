@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingHeaderCard: View {
+    @State var user: User
     var body: some View {
         HStack{
             Image("Shezad")
@@ -17,14 +18,14 @@ struct SettingHeaderCard: View {
                 .clipShape(Circle())
             VStack(alignment: .leading, spacing: 6){
                 HStack{
-                    Text("Shezad Ahamed")
+                    Text(user.username)
                         .fontWeight(.semibold)
                         .padding(.top, 3)
                     Spacer()
                 }
                 
                 HStack{
-                    Text("shezadahamed@example.com")
+                    Text(user.email)
                         .foregroundColor(Color("color_bg_inverted").opacity(0.5))
                         .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                 }
@@ -40,6 +41,6 @@ struct SettingHeaderCard: View {
 
 struct SettingHeaderCard_Previews: PreviewProvider {
     static var previews: some View {
-        SettingHeaderCard()
+        SettingHeaderCard(user: user1)
     }
 }

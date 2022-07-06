@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Group: Codable{
+struct Group: Codable, Hashable{
     let id : String
     let name: String
     let users: [User]

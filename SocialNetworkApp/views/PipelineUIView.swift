@@ -8,28 +8,41 @@
 import SwiftUI
 
 struct PipelineUIView: View {
+    @State var searchText: String = ""
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack{
-                    postCard(post: postDtoSample)
-                    postCard(post: postDtoSample)
-                    postCard(post: postDtoSample)
-                    postCard(post: postDtoSample)
-                    postCard(post: postDtoSample)
-                    postCard(post: postDtoSample)
-                    postCard(post: postDtoSample)
-                    postCard(post: postDtoSample)
-
+            ZStack {
+                Color("color_bg").edgesIgnoringSafeArea(.all)
+                ScrollView {
+                    VStack{
+                        postCard(post: postDtoSample)
+                        postCard(post: postDtoSample)
+                        postCard(post: postDtoSample)
+                        postCard(post: postDtoSample)
+                        postCard(post: postDtoSample)
+                        postCard(post: postDtoSample)
+                        postCard(post: postDtoSample)
+                        postCard(post: postDtoSample)
+                    }
                 }
+                .navigationTitle("pipeline")
+                .toolbar{
+                    
+                    NavigationLink{
+                        SearchView(searchText: searchText)
+                    }label:{
+                        Image(systemName: "magnifyingglass")
+                    }
+                        
             }
-            .navigationTitle("pipeline")
+            }
         }
     }
 }
 
 struct PipelineUIView_Previews: PreviewProvider {
     static var previews: some View {
-        PipelineUIView()
+        PipelineUIView(searchText: "")
+            .preferredColorScheme(.dark)
     }
 }

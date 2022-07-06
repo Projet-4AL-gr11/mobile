@@ -6,17 +6,38 @@
 //
 
 import SwiftUI
-
 struct HomeUIView: View {
+    @State var user: User
+    @ObservedObject var loginManager: LoginManager
     var body: some View {
-        VStack{
+        TabView {
+        
+            PipelineUIView()
+                .tabItem {
+                    Label("accueil", systemImage: "house")
+                }
+            
+            GroupListView(groupList: listGroupSample) // to replace with view specically
+                .tabItem {
+                    Label("groupe", systemImage: "rectangle.3.group.bubble.left")
+                }
+            
+            ChatListUIView(searchText: "")
+                .tabItem {
+                    Label("discussion", systemImage: "person.2")
+                }
+
+            SettingsView(user: user, loginManager: loginManager)
+                .tabItem {
+                    Label("reglage", systemImage: "person.circle")
+                }
             
         }
     }
 }
 
-struct HomeUIView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeUIView()
+        HomeUIView(user: user1, loginManager: LoginManager())
     }
 }

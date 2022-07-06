@@ -1,29 +1,28 @@
 //
-//  GroupUIView.swift
+//  GroupListView.swift
 //  SocialNetworkApp
 //
-//  Created by Ahamad Ben on 29/05/2022.
+//  Created by Ahamad Ben on 21/06/2022.
 //
 
 import SwiftUI
 
-struct GroupUIView: View {
-    var columns = [GridItem(.adaptive(minimum: 90), spacing: 20)]
-    @State var group: Group
+struct GroupListView: View {
     @State var searchText: String = ""
+    @State var groupList: [Group]
     var body: some View {
-        NavigationView {
-            ZStack{ 
+        NavigationView{
+            ZStack{
                 Color("color_bg").edgesIgnoringSafeArea(.all)
                 VStack{
                     ScrollView(showsIndicators: false){
                         VStack(alignment: .leading, spacing: 5){
-                           SearchCard(searchText: $searchText)
+                            SearchCard(searchText: $searchText)
                             HStack{
-                                Text("Participants:")
+                                Text("Groupes:")
                                     .font(.title3)
                                     .bold()
-                                Text(String(group.users.count))
+                                Text(String(groupList.count))
                                     .foregroundColor(.white)
                                     .frame(width: 25, height: 25)
                                     .background(.orange)
@@ -34,11 +33,12 @@ struct GroupUIView: View {
                             Divider()
                                 .padding(.bottom, 20)
                             
-                            LazyVGrid(columns: columns, spacing: 20){
-                                ForEach(group.users, id: \.self) { user in
-                                NavigationLink(destination: ChatUIView()){
-                                    UserCard(user: user)
+                            VStack(spacing: 20){
+                                ForEach(groupList, id: \.self) { group in
+                                NavigationLink(destination: GroupUIView(group: group)){
+                                    GroupCard(group: group)
                                 }
+                                Divider()
                                 
                             }
                         }
@@ -48,18 +48,14 @@ struct GroupUIView: View {
             .padding(.top)
             .padding(.horizontal)
             }
-            .navigationTitle(Text(group.name))
-            .toolbar{
-                Image(systemName: "square.and.pencil")
-                    .foregroundColor(Color("color_primary"))
-                    .font(.title2)
+            .navigationTitle(Text("groupes"))
         }
-        }
+        
     }
 }
 
-struct GroupUIView_Previews: PreviewProvider {
+struct GroupListView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupUIView(group: group1)
+        GroupListView(groupList: listGroupSample)
     }
 }

@@ -8,36 +8,44 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State var user: User
+    @ObservedObject var loginManager: LoginManager
     var body: some View {
         NavigationView {
-            ScrollView {
-                ZStack{
-                    Color("color_bg").edgesIgnoringSafeArea(.all)
-                    VStack{
-                        ScrollView{
+            ZStack {
+                Color("color_bg").edgesIgnoringSafeArea(.all)
+                ScrollView {
+                        VStack{
+                            ScrollView{
 
-                            SettingHeaderCard()
-                 
-                            SettingCard(icon: "person", title: "Account")
-                            SettingCard(icon: "bell", title: "Notifications and Sounds")
-                            SettingCard(icon: "lock", title: "Privacy & Security")
-                            SettingCard(icon: "archivebox", title: "Data and Storage")
-                            SettingCard(icon: "paintbrush", title: "Appearence")
-                            SettingCard(icon: "globe", title: "Language", selectedValue: "English")
+                                SettingHeaderCard(user: user)
+                     
+                                SettingCard(icon: "person", title: "Compte")
+                                SettingCard(icon: "bell", title: "Notifications et Son")
+                                SettingCard(icon: "lock", title: "Securite")
+                                SettingCard(icon: "archivebox", title: "Données et stockage")
+                                SettingCard(icon: "paintbrush", title: "Apparence")
+                                SettingCard(icon: "globe", title: "Langue", selectedValue: "English")
+                                SettingCard(icon: "rectangle.portrait.and.arrow.right", title: "Se Deconnecter")
+                                    .onTapGesture{
+                                        loginManager.logout()
+                                    }
+
+                            }
+                            .padding(.vertical)
+              
                         }
-                        .padding(.vertical)
-          
-                    }
-                    .padding()
+                        .padding()
                 }
+                .navigationTitle("Reglage")
             }
-            .navigationTitle("Reglage")
         }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(user: user1, loginManager: LoginManager())
+            .preferredColorScheme(.dark)
     }
 }
