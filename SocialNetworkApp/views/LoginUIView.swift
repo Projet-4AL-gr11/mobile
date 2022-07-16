@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct LoginUIView: View {
-    @State var email = ""
-    @State var password = ""
-    @ObservedObject var loginManager: LoginManager
+    @StateObject var loginManager: LoginViewModel
 
     
     var body: some View {
@@ -27,12 +25,12 @@ struct LoginUIView: View {
                         .bold()
                         .padding()
                     Text("challenger avec du code ")
-                    TextField("Email", text: $email)
+                    TextField("Nom d'utilisateur", text: $loginManager.username)
                         .textContentType(.emailAddress)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .frame(height: 50)
-                    SecureField("Mot de passe", text: $password)
+                    SecureField("Mot de passe", text: $loginManager.password)
                         .textContentType(.password)
                         .frame(height: 50)
                     HStack{
@@ -46,7 +44,10 @@ struct LoginUIView: View {
                                 .foregroundColor(.gray)
                         }
                     }
-                    Button(action: { loginManager.login()} ) {
+                    Button(action: {
+                        loginManager.login()
+                        
+                    } ) {
                         Text("Se connecter")
                     }
                     .padding()
@@ -55,13 +56,14 @@ struct LoginUIView: View {
             }
             .navigationTitle("Connexion")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
 
     }
 }
 
 struct LoginUIView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginUIView(loginManager: LoginManager())
+        LoginUIView(loginManager: LoginViewModel())
             .preferredColorScheme(.dark)
     }
 }

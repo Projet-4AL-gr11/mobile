@@ -23,11 +23,19 @@ struct GroupUIView: View {
                                 Text("Participants:")
                                     .font(.title3)
                                     .bold()
-                                Text(String(group.users.count))
-                                    .foregroundColor(.white)
-                                    .frame(width: 25, height: 25)
-                                    .background(.orange)
-                                    .cornerRadius(50)
+                                if group.users!.count > 0 {
+                                    Text(String(group.users!.count ))
+                                        .foregroundColor(.white)
+                                        .frame(width: 25, height: 25)
+                                        .background(.orange)
+                                        .cornerRadius(50)
+                                } else{
+                                    Text(String("0"))
+                                        .foregroundColor(.white)
+                                        .frame(width: 25, height: 25)
+                                        .background(.orange)
+                                        .cornerRadius(50)
+                                }
                             }
                             
                                                    
@@ -35,18 +43,24 @@ struct GroupUIView: View {
                                 .padding(.bottom, 20)
                             
                             LazyVGrid(columns: columns, spacing: 20){
-                                ForEach(group.users, id: \.self) { user in
-                                NavigationLink(destination: ChatUIView()){
-                                    UserCard(user: user)
+                               
+                                if group.users!.count > 0 {
+                                    ForEach(group.users!, id: \.self) { user in
+                                        NavigationLink(destination: ChatUIView()){
+                                            UserCard(user: user)
+                                        }
+                                    
+                                    }
                                 }
-                                
+                                else {
+                                    Text("pas de membres dans ce groupe")
+                                }
                             }
                         }
                     }
                 }
-            }
-            .padding(.top)
-            .padding(.horizontal)
+                .padding(.top)
+                .padding(.horizontal)
             }
             .navigationTitle(Text(group.name))
             .toolbar{
@@ -55,6 +69,7 @@ struct GroupUIView: View {
                     .font(.title2)
         }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

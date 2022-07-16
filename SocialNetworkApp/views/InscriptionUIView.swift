@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InscriptionUIView: View {
-    @ObservedObject var loginManager: LoginManager
+    @ObservedObject var loginManager: LoginViewModel
     var body: some View {
         NavigationView {
             ZStack {
@@ -49,12 +49,14 @@ struct InscriptionUIView: View {
             }
             .navigationTitle(Text("Inscription"))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+
     }
 }
 
 struct InscriptionUIView_Previews: PreviewProvider {
     static var previews: some View {
-        InscriptionUIView(loginManager: LoginManager())
+        InscriptionUIView(loginManager: LoginViewModel())
             .preferredColorScheme(.dark)
     }
 }

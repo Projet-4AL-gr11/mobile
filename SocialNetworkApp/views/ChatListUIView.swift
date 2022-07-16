@@ -60,6 +60,7 @@ struct ChatListUIView: View {
                     .font(.title2)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

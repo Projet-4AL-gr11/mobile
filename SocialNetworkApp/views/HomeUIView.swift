@@ -8,7 +8,7 @@
 import SwiftUI
 struct HomeUIView: View {
     @State var user: User
-    @ObservedObject var loginManager: LoginManager
+    @ObservedObject var loginManager: LoginViewModel
     var body: some View {
         TabView {
         
@@ -38,6 +38,6 @@ struct HomeUIView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeUIView(user: user1, loginManager: LoginManager())
+        HomeUIView(user: user1, loginManager: LoginViewModel())
     }
 }

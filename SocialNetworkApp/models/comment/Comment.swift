@@ -10,11 +10,11 @@ import Foundation
 struct Comment: Codable{
     let id: String
     let creator: User
-    let post: Post?
+    let post: PostTimeLine?
     let text: String
     let medias: [Media]?
     let reported: [ReportResponse]?
-    let createdAt: Date
-    let updatedAt: Date?
-    let deletedAt: Date?
+    let createdAt: String
+    let updatedAt: String?
+    let deletedAt: String?
 }

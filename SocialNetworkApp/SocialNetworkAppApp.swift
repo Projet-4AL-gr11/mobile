@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct SocialNetworkAppApp: App {
     @State var user: User = user1
-    @StateObject var loginManager = LoginManager()
+    @StateObject var loginManager = LoginViewModel()
     var body: some Scene {
         WindowGroup {
             if loginManager.isLoggedIn {

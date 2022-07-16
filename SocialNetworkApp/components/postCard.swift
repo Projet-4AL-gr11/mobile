@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct postCard: View {
-    let post: PostDto
+    let post: PostTimeLine
     var body: some View {
         VStack(alignment: .leading, spacing: 10 ){
             HStack(alignment: .top){
@@ -21,7 +21,7 @@ struct postCard: View {
                     Text("@" + post.creator.username)
                         .font(.title2)
                         .bold()
-                    Text(post.sharedPost.text)
+                    Text(post.text)
                         .font(.headline)
                     Image("postImage")
                         .resizable()
@@ -33,7 +33,7 @@ struct postCard: View {
                             
                         }label: {
                             Image(systemName: "message")
-                            Text(String(post.sharedPost.comments.count))
+                            Text(String("3"))
                             
                         }
                         Button{
@@ -46,7 +46,7 @@ struct postCard: View {
                             
                         }label: {
                             Image(systemName: "heart")
-                            Text(String(post.sharedPost.likes.count))
+                            Text(String("4"))
 
                         }
                         Button{
@@ -67,6 +67,6 @@ struct postCard: View {
 
 struct postCard_Previews: PreviewProvider {
     static var previews: some View {
-        postCard(post: postDtoSample).preferredColorScheme(.dark)
+        postCard(post: post1).preferredColorScheme(.dark)
     }
 }

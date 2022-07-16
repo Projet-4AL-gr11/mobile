@@ -12,10 +12,11 @@ struct Event: Codable{
     let description: String
     let startDate: Date
     let endDate: Date
-    let participationLimit: Int
-    let user: User
-    let group: Group
-    let language: Language
+    let participantsLimit: Int
+    let createdAt: Date
+    //let user: User
+    //let group: Group
+    //let language: Language
 }
 
 

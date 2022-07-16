@@ -15,14 +15,14 @@ struct PipelineUIView: View {
                 Color("color_bg").edgesIgnoringSafeArea(.all)
                 ScrollView {
                     VStack{
-                        postCard(post: postDtoSample)
-                        postCard(post: postDtoSample)
-                        postCard(post: postDtoSample)
-                        postCard(post: postDtoSample)
-                        postCard(post: postDtoSample)
-                        postCard(post: postDtoSample)
-                        postCard(post: postDtoSample)
-                        postCard(post: postDtoSample)
+                        postCard(post: post1)
+                        postCard(post: post1)
+                        postCard(post: post1)
+                        postCard(post: post1)
+                        postCard(post: post1)
+                        postCard(post: post1)
+                        postCard(post: post1)
+                        postCard(post: post1)
                     }
                 }
                 .navigationTitle("pipeline")
@@ -37,6 +37,7 @@ struct PipelineUIView: View {
             }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

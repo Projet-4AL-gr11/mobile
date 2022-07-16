@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @State var user: User
-    @ObservedObject var loginManager: LoginManager
+    @ObservedObject var loginManager: LoginViewModel
     var body: some View {
         NavigationView {
             ZStack {
@@ -21,6 +21,9 @@ struct SettingsView: View {
                                 SettingHeaderCard(user: user)
                      
                                 SettingCard(icon: "person", title: "Compte")
+                                    .onTapGesture {
+                                        loginManager.getTimeline()
+                                    }
                                 SettingCard(icon: "bell", title: "Notifications et Son")
                                 SettingCard(icon: "lock", title: "Securite")
                                 SettingCard(icon: "archivebox", title: "Données et stockage")
@@ -40,12 +43,13 @@ struct SettingsView: View {
                 .navigationTitle("Reglage")
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(user: user1, loginManager: LoginManager())
+        SettingsView(user: user1, loginManager: LoginViewModel())
             .preferredColorScheme(.dark)
     }
 }
