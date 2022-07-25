@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Media: Codable{
+struct Media: Codable, Hashable{
     let id : String
 
 }

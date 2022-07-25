@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct ReportResponse: Codable{
+struct ReportResponse: Codable, Hashable{
     let id : String
     let count: Int
 }

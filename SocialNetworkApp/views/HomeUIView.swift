@@ -9,10 +9,12 @@ import SwiftUI
 struct HomeUIView: View {
     @State var user: User
     @ObservedObject var loginManager: LoginViewModel
+    @ObservedObject var postViewModel: PostViewModel
+
     var body: some View {
         TabView {
         
-            PipelineUIView()
+            PipelineUIView(postViemModel: postViewModel)
                 .tabItem {
                     Label("accueil", systemImage: "house")
                 }
@@ -29,7 +31,7 @@ struct HomeUIView: View {
 
             SettingsView(user: user, loginManager: loginManager)
                 .tabItem {
-                    Label("reglage", systemImage: "person.circle")
+                    Label("profil", systemImage: "person.circle")
                 }
             
         }
@@ -38,6 +40,6 @@ struct HomeUIView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeUIView(user: user1, loginManager: LoginViewModel())
+        HomeUIView(user: user1, loginManager: LoginViewModel(), postViewModel: PostViewModel())
     }
 }

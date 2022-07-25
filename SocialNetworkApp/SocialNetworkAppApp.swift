@@ -11,10 +11,12 @@ import SwiftUI
 struct SocialNetworkAppApp: App {
     @State var user: User = user1
     @StateObject var loginManager = LoginViewModel()
+    @StateObject var postViewModel = PostViewModel()
+
     var body: some Scene {
         WindowGroup {
             if loginManager.isLoggedIn {
-                HomeUIView(user: user, loginManager: loginManager)
+                HomeUIView(user: user, loginManager: loginManager, postViewModel: PostViewModel())
                     .transition(.move(edge: .leading))
             }
             else{

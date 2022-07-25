@@ -1,20 +1,15 @@
 //
-//  PostViewModel.swift
+//  userViewModel.swift
 //  SocialNetworkApp
 //
-//  Created by Ahamad Ben on 13/06/2022.
+//  Created by Ahamad Ben on 17/07/2022.
 //
 
 import Foundation
-class PostViewModel : ObservableObject {
+class UserViewModel: ObservableObject{
+    @Published var friends: [User] = []
     
-    @Published var posts: [PostTimeLine] = []
-    
-    init() {
-        getTimeline()
-    }
-    
-    func getTimeline(){
+    func getFriends(userId: String){
         let defaults = UserDefaults.standard
 
         guard let token = defaults.string(forKey: "jwtToken") else {
@@ -24,21 +19,17 @@ class PostViewModel : ObservableObject {
         
         print("here you should get the token : \(token)")
         
-        WebService.getTilmeLine(token: token) {result in
+        WebService.getFriends(token: token, userId: userId) {result in
             
             switch result {
-            case .success(let post):
+            case .success(let friends):
                 DispatchQueue.main.async {
-                    self.posts = post
+                    self.friends = friends
                 }
             case .failure(let error):
-                print("error can't retrieve data")
-                print("another print for token: \(token)")
                 print(error.localizedDescription)
             }
         }
     }
-    
-    
     
 }

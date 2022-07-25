@@ -9,23 +9,23 @@ import SwiftUI
 
 struct PipelineUIView: View {
     @State var searchText: String = ""
+    @StateObject var postViemModel: PostViewModel
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color("color_bg").edgesIgnoringSafeArea(.all)
                 ScrollView {
-                    VStack{
-                        postCard(post: post1)
-                        postCard(post: post1)
-                        postCard(post: post1)
-                        postCard(post: post1)
-                        postCard(post: post1)
-                        postCard(post: post1)
-                        postCard(post: post1)
-                        postCard(post: post1)
+                    VStack(alignment: .leading){
+                        if postViemModel.posts.count > 0 {
+                            ForEach(postViemModel.posts, id: \.self) { post in
+                                postCard(post: post)
+                               
+                            }
+                        }
                     }
                 }
-                .navigationTitle("pipeline")
+                .navigationTitle("Accueil")
                 .toolbar{
                     
                     NavigationLink{
@@ -43,7 +43,7 @@ struct PipelineUIView: View {
 
 struct PipelineUIView_Previews: PreviewProvider {
     static var previews: some View {
-        PipelineUIView(searchText: "")
+        PipelineUIView(searchText: "", postViemModel: PostViewModel())
             .preferredColorScheme(.dark)
     }
 }

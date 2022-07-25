@@ -10,6 +10,7 @@ import SwiftUI
 struct GroupUIView: View {
     var columns = [GridItem(.adaptive(minimum: 90), spacing: 20)]
     @State var group: Group
+    @StateObject var groupModelView: GroupModelView
     @State var searchText: String = ""
     var body: some View {
         NavigationView {
@@ -23,8 +24,8 @@ struct GroupUIView: View {
                                 Text("Participants:")
                                     .font(.title3)
                                     .bold()
-                                if group.users!.count > 0 {
-                                    Text(String(group.users!.count ))
+                                if groupModelView.groupMembers.count > 0 {
+                                    Text(String(groupModelView.groupMembers.count))
                                         .foregroundColor(.white)
                                         .frame(width: 25, height: 25)
                                         .background(.orange)
@@ -44,12 +45,11 @@ struct GroupUIView: View {
                             
                             LazyVGrid(columns: columns, spacing: 20){
                                
-                                if group.users!.count > 0 {
-                                    ForEach(group.users!, id: \.self) { user in
+                                if groupModelView.groupMembers.count > 0 {
+                                    ForEach(groupModelView.groupMembers, id: \.self) { member in
                                         NavigationLink(destination: ChatUIView()){
-                                            UserCard(user: user)
+                                            UserCard(user: member.user)
                                         }
-                                    
                                     }
                                 }
                                 else {
@@ -68,13 +68,16 @@ struct GroupUIView: View {
                     .foregroundColor(Color("color_primary"))
                     .font(.title2)
         }
-        }
+        }.onAppear(perform: fetch)
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    private func fetch(){
+        groupModelView.getGroupMembers(groupId: group.id)
     }
 }
 
 struct GroupUIView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupUIView(group: group1)
+        GroupUIView(group: group1, groupModelView: GroupModelView())
     }
 }

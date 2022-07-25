@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct GroupListView: View {
+    @StateObject var groupViewModel = GroupModelView()
     @State var searchText: String = ""
     @State var groupList: [Group]
+    @State var groupMember: [GroupMembers] = []
+
     var body: some View {
         NavigationView{
             ZStack{
@@ -22,7 +25,7 @@ struct GroupListView: View {
                                 Text("Groupes:")
                                     .font(.title3)
                                     .bold()
-                                Text(String(groupList.count))
+                                Text(String(groupViewModel.groupList.count))
                                     .foregroundColor(.white)
                                     .frame(width: 25, height: 25)
                                     .background(.orange)
@@ -34,8 +37,8 @@ struct GroupListView: View {
                                 .padding(.bottom, 20)
                             
                             VStack(spacing: 20){
-                                ForEach(groupList, id: \.self) { group in
-                                NavigationLink(destination: GroupUIView(group: group)){
+                                ForEach(groupViewModel.groupList, id: \.self) { group in
+                                NavigationLink(destination: GroupUIView(group: group, groupModelView: groupViewModel)){
                                     GroupCard(group: group)
                                 }
                                 Divider()

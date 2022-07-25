@@ -38,29 +38,4 @@ class LoginViewModel : ObservableObject {
             self.isLoggedIn = false
         }
     }
-    
-    func getTimeline(){
-        let defaults = UserDefaults.standard
-
-        guard let token = defaults.string(forKey: "jwtToken") else {
-            print("can't get token")
-            return
-        }
-        
-        print("here you should get the token : \(token)")
-        
-        WebService.getTilmeLine(token: token) {result in
-            
-            switch result {
-            case .success(let posts):
-                print("getting data")
-                print(posts.self)
-            case .failure(let error):
-                print("error can't retrieve data")
-                print("another print for token: \(token)")
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
 }

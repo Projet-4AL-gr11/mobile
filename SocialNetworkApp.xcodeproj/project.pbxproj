@@ -32,7 +32,6 @@
 		E0448C5E28606C1D0072AFE8 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0448C5D28606C1D0072AFE8 /* ChatBubbleView.swift */; };
 		E0448C6028606E3F0072AFE8 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0448C5F28606E3F0072AFE8 /* CustomScrollView.swift */; };
 		E0448C62286071FF0072AFE8 /* ChatUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0448C61286071FF0072AFE8 /* ChatUIView.swift */; };
-		E04A36212857768600BAC421 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04A36202857768600BAC421 /* EventCard.swift */; };
 		E04A36232857769800BAC421 /* FilterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04A36222857769800BAC421 /* FilterCard.swift */; };
 		E04A3625285776AE00BAC421 /* FriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04A3624285776AE00BAC421 /* FriendCard.swift */; };
 		E04BEEF4287C3EC400B708CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BEEF3287C3EC400B708CE /* Login.swift */; };
@@ -74,8 +73,18 @@
 		E068FDF22843F74600665C6D /* FriendListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDF12843F74600665C6D /* FriendListUIView.swift */; };
 		E068FDF42843F75800665C6D /* GroupUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDF32843F75800665C6D /* GroupUIView.swift */; };
 		E068FDF62843F76800665C6D /* ChatListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDF52843F76800665C6D /* ChatListUIView.swift */; };
+		E0746993288D85080066D671 /* CommentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746992288D85080066D671 /* CommentCard.swift */; };
+		E0746995288D882F0066D671 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746994288D882F0066D671 /* CommentView.swift */; };
+		E0746997288D93E40066D671 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746996288D93E40066D671 /* PostManager.swift */; };
+		E0746999288DBAD10066D671 /* AddCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746998288DBAD10066D671 /* AddCommentView.swift */; };
+		E074699B288DF5620066D671 /* CommentDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E074699A288DF5620066D671 /* CommentDto.swift */; };
 		E0BD721D28522FB500A70F00 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD721C28522FB500A70F00 /* Media.swift */; };
 		E0BD721F285374B000A70F00 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD721E285374B000A70F00 /* WebService.swift */; };
+		E0E233C5288446A200417381 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C4288446A200417381 /* EventCard.swift */; };
+		E0E233C7288455F100417381 /* EventUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C6288455F100417381 /* EventUIView.swift */; };
+		E0E233C928845CD500417381 /* userViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C828845CD500417381 /* userViewModel.swift */; };
+		E0E233CB288481C200417381 /* likePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233CA288481C200417381 /* likePost.swift */; };
+		E0EEA4E4288EFBA500AD8C2C /* GroupMembers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EEA4E3288EFBA500AD8C2C /* GroupMembers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,7 +130,6 @@
 		E0448C5D28606C1D0072AFE8 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
 		E0448C5F28606E3F0072AFE8 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		E0448C61286071FF0072AFE8 /* ChatUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUIView.swift; sourceTree = "<group>"; };
-		E04A36202857768600BAC421 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		E04A36222857769800BAC421 /* FilterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCard.swift; sourceTree = "<group>"; };
 		E04A3624285776AE00BAC421 /* FriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCard.swift; sourceTree = "<group>"; };
 		E04BEEF3287C3EC400B708CE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -166,8 +174,18 @@
 		E068FDF12843F74600665C6D /* FriendListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListUIView.swift; sourceTree = "<group>"; };
 		E068FDF32843F75800665C6D /* GroupUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUIView.swift; sourceTree = "<group>"; };
 		E068FDF52843F76800665C6D /* ChatListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListUIView.swift; sourceTree = "<group>"; };
+		E0746992288D85080066D671 /* CommentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCard.swift; sourceTree = "<group>"; };
+		E0746994288D882F0066D671 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		E0746996288D93E40066D671 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		E0746998288DBAD10066D671 /* AddCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentView.swift; sourceTree = "<group>"; };
+		E074699A288DF5620066D671 /* CommentDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDto.swift; sourceTree = "<group>"; };
 		E0BD721C28522FB500A70F00 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		E0BD721E285374B000A70F00 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		E0E233C4288446A200417381 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
+		E0E233C6288455F100417381 /* EventUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUIView.swift; sourceTree = "<group>"; };
+		E0E233C828845CD500417381 /* userViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userViewModel.swift; sourceTree = "<group>"; };
+		E0E233CA288481C200417381 /* likePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likePost.swift; sourceTree = "<group>"; };
+		E0EEA4E3288EFBA500AD8C2C /* GroupMembers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				E0448C46285C7C600072AFE8 /* PostTimeLine.swift */,
+				E0E233CA288481C200417381 /* likePost.swift */,
 			);
 			path = post;
 			sourceTree = "<group>";
@@ -266,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				E0568DF6284E4FD2003788F5 /* Group.swift */,
+				E0EEA4E3288EFBA500AD8C2C /* GroupMembers.swift */,
 			);
 			path = group;
 			sourceTree = "<group>";
@@ -311,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				E0568E09284E5A7D003788F5 /* Comment.swift */,
+				E074699A288DF5620066D671 /* CommentDto.swift */,
 			);
 			path = comment;
 			sourceTree = "<group>";
@@ -320,6 +341,7 @@
 			children = (
 				E0BD721E285374B000A70F00 /* WebService.swift */,
 				E05B07E0286314F900206684 /* LoginManager.swift */,
+				E0746996288D93E40066D671 /* PostManager.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -408,7 +430,6 @@
 		E068FDDF2843C76600665C6D /* components */ = {
 			isa = PBXGroup;
 			children = (
-				E04A36202857768600BAC421 /* EventCard.swift */,
 				E04A36222857769800BAC421 /* FilterCard.swift */,
 				E04A3624285776AE00BAC421 /* FriendCard.swift */,
 				E0448C44285C788A0072AFE8 /* postCard.swift */,
@@ -419,6 +440,8 @@
 				E05B07DB2861C35000206684 /* GroupCard.swift */,
 				E05B07DD2861CA7600206684 /* UserSearchCard.swift */,
 				E05B07E22863262000206684 /* SearchCard.swift */,
+				E0E233C4288446A200417381 /* EventCard.swift */,
+				E0746992288D85080066D671 /* CommentCard.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -442,6 +465,9 @@
 				E0448C5F28606E3F0072AFE8 /* CustomScrollView.swift */,
 				E0448C61286071FF0072AFE8 /* ChatUIView.swift */,
 				E05B07D92861BDAD00206684 /* GroupListView.swift */,
+				E0E233C6288455F100417381 /* EventUIView.swift */,
+				E0746994288D882F0066D671 /* CommentView.swift */,
+				E0746998288DBAD10066D671 /* AddCommentView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -461,6 +487,7 @@
 				E021C8F3285762B700589730 /* ConversationViewModel.swift */,
 				E021C8F5285762D600589730 /* CommentViewModel.swift */,
 				E04BEEF7287C4B3B00B708CE /* LoginViewModel.swift */,
+				E0E233C828845CD500417381 /* userViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -612,6 +639,7 @@
 				E0448C52285CC5360072AFE8 /* SettingCard.swift in Sources */,
 				E0448C45285C788A0072AFE8 /* postCard.swift in Sources */,
 				E0448C5E28606C1D0072AFE8 /* ChatBubbleView.swift in Sources */,
+				E0E233CB288481C200417381 /* likePost.swift in Sources */,
 				E0448C62286071FF0072AFE8 /* ChatUIView.swift in Sources */,
 				E0568DF1284E4D61003788F5 /* LeaderBoard.swift in Sources */,
 				E05B07E1286314F900206684 /* LoginManager.swift in Sources */,
@@ -621,19 +649,24 @@
 				E068FDF22843F74600665C6D /* FriendListUIView.swift in Sources */,
 				E04A3625285776AE00BAC421 /* FriendCard.swift in Sources */,
 				E0568DED284E4A52003788F5 /* Message.swift in Sources */,
+				E0746995288D882F0066D671 /* CommentView.swift in Sources */,
 				E0448C4E285CB95A0072AFE8 /* ChatCard.swift in Sources */,
-				E04A36212857768600BAC421 /* EventCard.swift in Sources */,
+				E0EEA4E4288EFBA500AD8C2C /* GroupMembers.swift in Sources */,
 				E0568DFD284E54EF003788F5 /* ExerciseTemplate.swift in Sources */,
 				E021C8F6285762D600589730 /* CommentViewModel.swift in Sources */,
 				E0BD721D28522FB500A70F00 /* Media.swift in Sources */,
 				E068FDE42843F07000665C6D /* LoginUIView.swift in Sources */,
 				E060384C2882FE220073B64F /* SharedEvent.swift in Sources */,
+				E0746993288D85080066D671 /* CommentCard.swift in Sources */,
 				E05B07DA2861BDAD00206684 /* GroupListView.swift in Sources */,
 				E021C8EE2857627600589730 /* FriendShipViewModel.swift in Sources */,
+				E074699B288DF5620066D671 /* CommentDto.swift in Sources */,
 				E068FDF62843F76800665C6D /* ChatListUIView.swift in Sources */,
 				E068FDE62843F12600665C6D /* InscriptionUIView.swift in Sources */,
+				E0E233C7288455F100417381 /* EventUIView.swift in Sources */,
 				E0568DE1284E4498003788F5 /* User.swift in Sources */,
 				E021C8EC2857625700589730 /* GroupViewModel.swift in Sources */,
+				E0E233C5288446A200417381 /* EventCard.swift in Sources */,
 				E04A36232857769800BAC421 /* FilterCard.swift in Sources */,
 				E068FDEC2843F6EF00665C6D /* ProfilUIView.swift in Sources */,
 				E0448C5C28606BBA0072AFE8 /* ChatModel.swift in Sources */,
@@ -645,6 +678,7 @@
 				E0568E04284E5887003788F5 /* EventSearch.swift in Sources */,
 				E0448C4C285CB68D0072AFE8 /* SearchView.swift in Sources */,
 				E0568DE7284E4704003788F5 /* ReportResponse.swift in Sources */,
+				E0E233C928845CD500417381 /* userViewModel.swift in Sources */,
 				E0448C50285CBB180072AFE8 /* OnlineUsersView.swift in Sources */,
 				E05B07D82860AAEF00206684 /* UserCard.swift in Sources */,
 				E04BEEF8287C4B3B00B708CE /* LoginViewModel.swift in Sources */,
@@ -657,6 +691,8 @@
 				E0448C5A28606B5C0072AFE8 /* BubblePosition.swift in Sources */,
 				E021C8E82857622500589730 /* MediaViewModel.swift in Sources */,
 				E05B07DC2861C35000206684 /* GroupCard.swift in Sources */,
+				E0746999288DBAD10066D671 /* AddCommentView.swift in Sources */,
+				E0746997288D93E40066D671 /* PostManager.swift in Sources */,
 				E068FDB52843AEE900665C6D /* SocialNetworkAppApp.swift in Sources */,
 				E0568E02284E569F003788F5 /* Event.swift in Sources */,
 			);

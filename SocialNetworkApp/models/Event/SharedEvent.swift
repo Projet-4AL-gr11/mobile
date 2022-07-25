@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct SharedEvent: Codable {
+struct SharedEvent: Codable, Hashable {
     let id, name, description, startDate, endDate: String
     let participantsLimit: Int
     let createdAt: String
