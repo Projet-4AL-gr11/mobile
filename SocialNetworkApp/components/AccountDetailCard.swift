@@ -1,17 +1,16 @@
 //
-//  SettingCard.swift
+//  AccountDetailCard.swift
 //  SocialNetworkApp
 //
-//  Created by Ahamad Ben on 17/06/2022.
+//  Created by Ahamad Ben on 27/07/2022.
 //
 
 import SwiftUI
 
-struct SettingCard: View {
+struct AccountDetailCard: View {
     var icon: String = ""
     var title: String = ""
     var selectedValue: String?
-    
     var body: some View {
         HStack{
             Image(systemName: icon)
@@ -30,9 +29,6 @@ struct SettingCard: View {
                         Text(selectedValue ?? "")
                         .foregroundColor(Color("color_bg_inverted").opacity(0.5))
                         .padding(.top, 3): nil
-                    
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(Color("color_primary"))
                 }
                 
                 Divider()
@@ -44,3 +40,8 @@ struct SettingCard: View {
     }
 }
 
+struct AccountDetailCard_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountDetailCard()
+    }
+}

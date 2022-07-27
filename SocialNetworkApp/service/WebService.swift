@@ -81,6 +81,107 @@ struct WebService {
         
     }
     
+    static func getEvent(token: String, completion: @escaping (Result<[SharedEvent], RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/event/") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            guard let events = try? JSONDecoder().decode([SharedEvent].self, from: data) else {
+                print("can't decode data")
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                
+                return
+            }
+
+            print(events.self)
+            
+            completion(.success(events))
+            
+        }.resume()
+        
+    }
+    
+    
+    
+    static func makePost(token: String, text:String, completion: @escaping (Result<PostTimeLine, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/post/") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        let body = PostDto(text: text, group: nil, sharedEvent: nil , sharesPost: nil)
+        
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            guard let post = try? JSONDecoder().decode(PostTimeLine.self, from: data) else {
+                print("can't decode data")
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                
+                return
+            }
+
+            print(post.self)
+            
+            completion(.success(post))
+            
+        }.resume()
+        
+    }
+    
+    static func createGroup(token: String, name:String, completion: @escaping (Result<GroupResponse, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/group/") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        let body = GroupRequest(name: name, user: nil)
+        
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            guard let group = try? JSONDecoder().decode(GroupResponse.self, from: data) else {
+                print("can't decode data")
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                
+                return
+            }
+
+            print(group.self)
+            
+            completion(.success(group))
+            
+        }.resume()
+        
+    }
+    
     static func getGroup(token: String, completion: @escaping (Result<[Group], RetrievePostError>) -> Void) {
         guard let url = URL(string: "http://localhost:3000/group/") else{
             completion(.failure(.custom(Message: "network error")))
@@ -237,7 +338,7 @@ struct WebService {
     }
     
     static func getFriends(token: String, userId: String, completion: @escaping (Result<[User], RetrievePostError>) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/user/frienddhips/" + userId) else{
+        guard let url = URL(string: "http://localhost:3000/user/friendships/" + userId) else{
             completion(.failure(.custom(Message: "network error")))
             return
         }
@@ -261,6 +362,60 @@ struct WebService {
         }.resume()
         
     }
+    
+    
+    static func getUserById(token: String, userId: String, completion: @escaping (Result<User, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/user/" + userId) else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            guard let user = try? JSONDecoder().decode(User.self, from: data) else {
+                print("can't decode data")
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                return
+            }
+            print(user.self)
+            completion(.success(user))
+            
+        }.resume()
+        
+    }
+    
+    static func getUserByName(token: String, name: String, completion: @escaping (Result<[User], RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/user/researchUsername/" + name) else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            guard let user = try? JSONDecoder().decode([User].self, from: data) else {
+                print("can't decode data")
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                return
+            }
+            print(user.self)
+            completion(.success(user))
+            
+        }.resume()
+        
+    }
+    
     
     
     static func getLikes(token: String, postId: String, completion: @escaping (Result<[User], RetrievePostError>) -> Void) {
@@ -373,21 +528,24 @@ struct WebService {
         
     }
     
-    static func joinGroup(token: String, groupId: String, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
+    static func joinGroup(token: String, groupId: String, user: User, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
         guard let url = URL(string: "http://localhost:3000/group/addFollower/" + groupId) else{
             completion(.failure(.custom(Message: "network error")))
             return
         }
+        let body = user
         var request = URLRequest(url: url)
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
+        request.httpBody = try? JSONEncoder().encode(body)
+
         URLSession.shared.dataTask(with: request) { ( data, response, error) in
             guard let data = data, error == nil else {
                 completion(.failure(.custom(Message: "no data")))
                 return
             }
-            print(data.self)
+            print("join=group ok")
             completion(.success(data.self))
         }.resume()
         
@@ -411,7 +569,7 @@ struct WebService {
             completion(.success(data.self))
         }.resume()
     }
-    
+        
     static func getFriendsList(token: String, userId: String, completion: @escaping (Result<[User], RetrievePostError>) -> Void) {
         guard let url = URL(string: "localhost:3000/user/friendships/" + userId) else{
             completion(.failure(.custom(Message: "network error")))

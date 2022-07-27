@@ -19,10 +19,16 @@ struct SettingsView: View {
                             ScrollView{
 
                                 SettingHeaderCard(user: user)
-                                SettingCard(icon: "person", title: "Compte")
-                                SettingCard(icon: "person.fill.checkmark", title: "Amis")
+                                NavigationLink(destination: ProfilUIView(userViewModel: UserViewModel())){
+                                    SettingCard(icon: "person", title: "Compte")
+                                }
+                                NavigationLink(destination: FriendListUIView(userViewModel: UserViewModel())){
+                                    SettingCard(icon: "person.fill.checkmark", title: "Amis")
+                                }
                                 SettingCard(icon: "lock", title: "Securite")
-                                SettingCard(icon: "chevron.left.forwardslash.chevron.right", title: "Evenement")
+                                NavigationLink(destination: EventUIView(eventViewModel: EventViewModel())){
+                                    SettingCard(icon: "chevron.left.forwardslash.chevron.right", title: "Evenement")
+                                }
                                 SettingCard(icon: "paintbrush", title: "Apparence")
                                 SettingCard(icon: "globe", title: "Langue", selectedValue: "Francais")
                                 SettingCard(icon: "rectangle.portrait.and.arrow.right", title: "Se Deconnecter")

@@ -12,6 +12,8 @@ struct GroupUIView: View {
     @State var group: Group
     @StateObject var groupModelView: GroupModelView
     @State var searchText: String = ""
+    @State var showMemberView = false
+
     var body: some View {
         NavigationView {
             ZStack{ 
@@ -28,13 +30,13 @@ struct GroupUIView: View {
                                     Text(String(groupModelView.groupMembers.count))
                                         .foregroundColor(.white)
                                         .frame(width: 25, height: 25)
-                                        .background(.orange)
+                                        .background(.blue)
                                         .cornerRadius(50)
                                 } else{
                                     Text(String("0"))
                                         .foregroundColor(.white)
                                         .frame(width: 25, height: 25)
-                                        .background(.orange)
+                                        .background(.blue)
                                         .cornerRadius(50)
                                 }
                             }
@@ -61,6 +63,31 @@ struct GroupUIView: View {
                 }
                 .padding(.top)
                 .padding(.horizontal)
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button{
+                            self.showMemberView = true
+                        } label: {
+                            Text("+")
+                            .font(.system(.largeTitle))
+                            .frame(width: 77, height: 70)
+                            .foregroundColor(Color.white)
+                            .padding(.bottom, 7)
+                        }.sheet(isPresented: $showMemberView){
+                            AddMemberView(text: "", group: group)
+                        }
+                        .background(Color.green)
+                        .cornerRadius(38.5)
+                        .padding()
+                        .shadow(color: Color.black.opacity(0.3),
+                                radius: 3,
+                                x: 3,
+                                y: 3)
+                    }
+                }
             }
             .navigationTitle(Text(group.name))
             .toolbar{

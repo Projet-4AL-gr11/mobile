@@ -16,7 +16,7 @@ struct SocialNetworkAppApp: App {
     var body: some Scene {
         WindowGroup {
             if loginManager.isLoggedIn {
-                HomeUIView(user: user, loginManager: loginManager, postViewModel: PostViewModel())
+                HomeUIView(user: user, loginManager: loginManager, postViewModel: PostViewModel(), groupViewModel: GroupModelView())
                     .transition(.move(edge: .leading))
             }
             else{

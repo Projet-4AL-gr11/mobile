@@ -10,16 +10,24 @@ struct HomeUIView: View {
     @State var user: User
     @ObservedObject var loginManager: LoginViewModel
     @ObservedObject var postViewModel: PostViewModel
+    @ObservedObject var groupViewModel: GroupModelView
 
     var body: some View {
         TabView {
         
             PipelineUIView(postViemModel: postViewModel)
+                .onAppear {
+                    postViewModel.getTimeline()
+                }
                 .tabItem {
                     Label("accueil", systemImage: "house")
                 }
+                
             
             GroupListView(groupList: listGroupSample) // to replace with view specically
+                .onAppear{
+                    groupViewModel.getGroup()
+                }
                 .tabItem {
                     Label("groupe", systemImage: "rectangle.3.group.bubble.left")
                 }
@@ -36,10 +44,11 @@ struct HomeUIView: View {
             
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeUIView(user: user1, loginManager: LoginViewModel(), postViewModel: PostViewModel())
+        HomeUIView(user: user1, loginManager: LoginViewModel(), postViewModel: PostViewModel(), groupViewModel: GroupModelView())
     }
 }

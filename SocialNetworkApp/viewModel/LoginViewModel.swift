@@ -20,7 +20,7 @@ class LoginViewModel : ObservableObject {
             switch result {
             case .success(let loginResponse):
                 defaults.setValue(loginResponse.jwtToken, forKey: "jwtToken")
-                print("here the offical token : \(loginResponse.jwtToken)")
+                defaults.setValue(loginResponse.id, forKey: "userId")
                 DispatchQueue.main.async {
                     self.isLoggedIn = true
                 }

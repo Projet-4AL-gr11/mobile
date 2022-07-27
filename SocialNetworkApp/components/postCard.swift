@@ -15,7 +15,7 @@ struct postCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10 ){
             HStack(alignment: .top){
-                Image("profil")
+                Image("Shezad")
                     .resizable()
                     .frame(width: 80, height: 80)
                     .scaledToFit()

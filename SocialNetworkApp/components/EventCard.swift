@@ -25,7 +25,7 @@ struct EventCard: View {
                 }
                 .padding(.bottom, 10)
                 
-                Text(event.description)
+                Text(event.description.prefix(50))
                     .font(.body)
             
                 Text(event.startDate + " à " + event.endDate)

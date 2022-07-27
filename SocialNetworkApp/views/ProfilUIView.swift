@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ProfilUIView: View {
+    let userViewModel: UserViewModel
     var body: some View {
         VStack(alignment: .leading){
             HStack{
                 VStack(alignment: .leading){
-                    Text("Marine Lemaitre")
+                    Text(userViewModel.user!.username)
                         .font(.title)
                         .bold()
-                    Text("lemmaitre@gmail.com")
+                    Text(userViewModel.user!.email)
                 }
                 .padding()
                 Spacer()
@@ -24,46 +25,14 @@ struct ProfilUIView: View {
                     .frame(width: 100, height: 100)
                     .cornerRadius(200)
             }.padding()
-            VStack{
-                HStack(alignment: .top){
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .frame(width: 35, height: 45)
-                        .foregroundColor(.pink)
-                        .padding()
-                    VStack(alignment: .leading){
-                        Text("username")
-                        Text("M.lemaitre")
-                            .font(.title2)
-                            .bold()
-                    }.padding()
-                }.padding()
-                HStack(alignment: .top){
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .frame(width: 35, height: 45)
-                        .foregroundColor(.pink)
-                        .padding()
-                    VStack(alignment: .leading){
-                        Text("nom")
-                        Text("M.lemaitre")
-                            .font(.title2)
-                            .bold()
-                    }.padding()
-                }.padding()
-                HStack(alignment: .top){
-                    Image(systemName: "person.crop.square.filled.and.at.rectangle")
-                        .resizable()
-                        .frame(width: 35, height: 45)
-                        .foregroundColor(.pink)
-                        .padding()
-                    VStack(alignment: .leading){
-                        Text("email")
-                        Text("M.lemaitre")
-                            .font(.title2)
-                            .bold()
-                    }.padding()
-                }.padding()
+            Text(userViewModel.user!.bio)
+                .padding()
+                .font(.headline)
+            ScrollView{
+                AccountDetailCard(icon: "person", title: userViewModel.user!.username, selectedValue: "")
+                AccountDetailCard(icon: "mail", title: userViewModel.user!.email, selectedValue: "")
+                AccountDetailCard(icon: "person.badge.key.fill", title: userViewModel.user!.userType, selectedValue: "")
+
             }
         }
     }
@@ -71,6 +40,6 @@ struct ProfilUIView: View {
 
 struct ProfilUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilUIView()
+        ProfilUIView(userViewModel: UserViewModel())
     }
 }

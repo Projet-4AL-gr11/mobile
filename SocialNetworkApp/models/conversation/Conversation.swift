@@ -9,7 +9,7 @@ import Foundation
 struct Conversation: Codable{
     let id: String
     let friendship: FriendfShip
-    let messages: [Message]
+    //let messages: [Message]
     let group: Group
     let createdAt: Date
 }

@@ -21,9 +21,7 @@ class PostViewModel : ObservableObject {
             print("can't get token")
             return
         }
-        
-        print("here you should get the token : \(token)")
-        
+            
         WebService.getTilmeLine(token: token) {result in
             
             switch result {
@@ -39,6 +37,28 @@ class PostViewModel : ObservableObject {
         }
     }
     
+    func makePost(text: String) -> Bool {
+        let defaults = UserDefaults.standard
+        var isDone: Bool = true
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return false
+        }
+                
+        WebService.makePost(token: token, text: text) {result in
+            
+            switch result {
+            case .success(_):
+                self.getTimeline()
+            case .failure(let error):
+                isDone = false
+                print("error can't retrieve data")
+                print(error.localizedDescription)
+            }
+        }
+        return isDone
+    }
     
-    
+
 }
