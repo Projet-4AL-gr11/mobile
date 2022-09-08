@@ -66,15 +66,12 @@ struct WebService {
                 completion(.failure(.custom(Message: "no data")))
                 return
             }
+            print("")
             guard let posts = try? JSONDecoder().decode([PostTimeLine].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
-                
                 return
             }
-
             print(posts.self)
-            
             completion(.success(posts))
             
         }.resume()
@@ -96,7 +93,6 @@ struct WebService {
                 return
             }
             guard let events = try? JSONDecoder().decode([SharedEvent].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -133,7 +129,6 @@ struct WebService {
                 return
             }
             guard let post = try? JSONDecoder().decode(PostTimeLine.self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -168,7 +163,6 @@ struct WebService {
                 return
             }
             guard let group = try? JSONDecoder().decode(GroupResponse.self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -197,7 +191,6 @@ struct WebService {
                 return
             }
             guard let groups = try? JSONDecoder().decode([Group].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -226,7 +219,6 @@ struct WebService {
                 return
             }
             guard let members = try? JSONDecoder().decode([GroupMembers].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -327,7 +319,6 @@ struct WebService {
                 return
             }
             guard let comments = try? JSONDecoder().decode([Comment].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
@@ -352,7 +343,6 @@ struct WebService {
                 return
             }
             guard let friends = try? JSONDecoder().decode([User].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
@@ -379,7 +369,6 @@ struct WebService {
                 return
             }
             guard let user = try? JSONDecoder().decode(User.self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
@@ -405,7 +394,6 @@ struct WebService {
                 return
             }
             guard let user = try? JSONDecoder().decode([User].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
@@ -433,7 +421,6 @@ struct WebService {
                 return
             }
             guard let user = try? JSONDecoder().decode([User].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
@@ -458,7 +445,6 @@ struct WebService {
                 return
             }
             guard let response = try? JSONDecoder().decode(Bool.self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
@@ -485,7 +471,6 @@ struct WebService {
                 return
             }
             guard let posts = try? JSONDecoder().decode([PostTimeLine].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -514,7 +499,6 @@ struct WebService {
                 return
             }
             guard let users = try? JSONDecoder().decode([User].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -585,7 +569,6 @@ struct WebService {
                 return
             }
             guard let posts = try? JSONDecoder().decode([User].self, from: data) else {
-                print("can't decode data")
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 
                 return
@@ -597,5 +580,28 @@ struct WebService {
             
         }.resume()
         
+    }
+    
+    static func addMedia(token: String, postId: String, file: Data, completion: @escaping (Result<Bool, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/postPicture/" + postId) else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        let body = MediaRequest(file: file)
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONEncoder().encode(body)
+
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let _ = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+           
+            completion(.success(true))
+        }.resume()
     }
 }

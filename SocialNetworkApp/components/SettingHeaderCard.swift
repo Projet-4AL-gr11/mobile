@@ -11,11 +11,22 @@ struct SettingHeaderCard: View {
     @State var user: User
     var body: some View {
         HStack{
-            Image("Shezad")
-                .resizable()
-                .background( Color("color_bg_inverted").opacity(0.05))
-                .frame(width: 80, height: 80)
-                .clipShape(Circle())
+            if user.profilePicture != nil {
+                AsyncImage(url: URL(string: endPoint + user.profilePicture!.key)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 50, height: 50)
+            }
+            else{
+                Image("no-profile")
+                    .resizable()
+                    .background( Color("color_bg_inverted").opacity(0.05))
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
+            }
+            
             VStack(alignment: .leading, spacing: 6){
                 HStack{
                     Text(user.username)

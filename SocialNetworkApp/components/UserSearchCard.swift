@@ -15,11 +15,24 @@ struct UserSearchCard: View {
     @State var text: String = "Ajouter"
     var body: some View {
         HStack{
-            Image("Catherine")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .background(.green)
-                .cornerRadius(50)
+            if user.profilePicture != nil{
+                let key = user.profilePicture!.key
+                AsyncImage(url: URL(string: endPoint + key)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .background(Color("color_bg_inverted").opacity(0.05))
+                .frame(width: 80, height: 80)
+                .clipShape(Circle())
+            }
+            else{
+                Image("no-profile")
+                    .resizable()
+                    .background(Color("color_bg_inverted").opacity(0.05))
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
+            }
             VStack(alignment: .leading, spacing: 10){
                 Text(user.username)
                     .font(.title)

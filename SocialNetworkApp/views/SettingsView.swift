@@ -18,7 +18,6 @@ struct SettingsView: View {
                         VStack{
                             ScrollView{
 
-                                SettingHeaderCard(user: user)
                                 NavigationLink(destination: ProfilUIView(userViewModel: UserViewModel())){
                                     SettingCard(icon: "person", title: "Compte")
                                 }

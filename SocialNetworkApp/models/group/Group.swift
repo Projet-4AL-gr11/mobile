@@ -9,7 +9,7 @@ import Foundation
 struct Group: Codable, Hashable{
     let id : String
     let name: String
-    let picture: String?
-    let bannerPicture: String?
+    let picture: Media?
+    let bannerPicture: Media?
 
  }

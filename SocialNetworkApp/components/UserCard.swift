@@ -12,11 +12,24 @@ struct UserCard: View {
     var user: User
     var body: some View {
         VStack{
-            Image("Shezad")
-                .resizable()
-                .background( Color("color_bg_inverted").opacity(0.05))
+            if user.profilePicture != nil{
+                let key = user.profilePicture!.key
+                AsyncImage(url: URL(string: endPoint + key)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .background(Color("color_bg_inverted").opacity(0.05))
                 .frame(width: 80, height: 80)
                 .clipShape(Circle())
+            }
+            else{
+                Image("no-profile")
+                    .resizable()
+                    .background(Color("color_bg_inverted").opacity(0.05))
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
+            }
             Text(user.username)
                 .font(.subheadline)
                 

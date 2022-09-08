@@ -14,6 +14,11 @@
 		E014CDDD28913529001B4B13 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014CDDC28913529001B4B13 /* AddGroupView.swift */; };
 		E014CDDF2891353D001B4B13 /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014CDDE2891353D001B4B13 /* AddMemberView.swift */; };
 		E014CDE1289140E2001B4B13 /* PostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014CDE0289140E2001B4B13 /* PostDto.swift */; };
+		E01FA3A728C0CD4100FC9699 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01FA3A628C0CD4100FC9699 /* Media.swift */; };
+		E01FA3AA28C0DAED00FC9699 /* AWSS3 in Frameworks */ = {isa = PBXBuildFile; productRef = E01FA3A928C0DAED00FC9699 /* AWSS3 */; };
+		E01FA3AC28C0DAED00FC9699 /* AWSS3Control in Frameworks */ = {isa = PBXBuildFile; productRef = E01FA3AB28C0DAED00FC9699 /* AWSS3Control */; };
+		E01FA3AE28C0DAED00FC9699 /* AWSS3Outposts in Frameworks */ = {isa = PBXBuildFile; productRef = E01FA3AD28C0DAED00FC9699 /* AWSS3Outposts */; };
+		E01FA3B028C0DE3700FC9699 /* AwsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01FA3AF28C0DE3600FC9699 /* AwsService.swift */; };
 		E021C8E4285761E900589730 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021C8E3285761E900589730 /* PostViewModel.swift */; };
 		E021C8EC2857625700589730 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021C8EB2857625700589730 /* GroupViewModel.swift */; };
 		E021C8F22857629B00589730 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021C8F12857629B00589730 /* EventViewModel.swift */; };
@@ -34,6 +39,10 @@
 		E04BEEF4287C3EC400B708CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BEEF3287C3EC400B708CE /* Login.swift */; };
 		E04BEEF6287C422300B708CE /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BEEF5287C422300B708CE /* LoginResponse.swift */; };
 		E04BEEF8287C4B3B00B708CE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BEEF7287C4B3B00B708CE /* LoginViewModel.swift */; };
+		E0544BBD28C5FC68009699B4 /* UserCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0544BBC28C5FC68009699B4 /* UserCreator.swift */; };
+		E0544BBF28C74D68009699B4 /* CommentPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0544BBE28C74D68009699B4 /* CommentPost.swift */; };
+		E0544BC128C75717009699B4 /* MediaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0544BC028C75717009699B4 /* MediaRequest.swift */; };
+		E0544BC328C757AE009699B4 /* MediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0544BC228C757AE009699B4 /* MediaResponse.swift */; };
 		E0568DE1284E4498003788F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0568DE0284E4498003788F5 /* User.swift */; };
 		E0568DF4284E4E2D003788F5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0568DF3284E4E2D003788F5 /* Language.swift */; };
 		E0568DF7284E4FD2003788F5 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0568DF6284E4FD2003788F5 /* Group.swift */; };
@@ -68,6 +77,8 @@
 		E0746997288D93E40066D671 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746996288D93E40066D671 /* PostManager.swift */; };
 		E0746999288DBAD10066D671 /* AddCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746998288DBAD10066D671 /* AddCommentView.swift */; };
 		E074699B288DF5620066D671 /* CommentDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E074699A288DF5620066D671 /* CommentDto.swift */; };
+		E09E3DAD289EB1E500B3D775 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E3DAC289EB1E500B3D775 /* ImagePickerView.swift */; };
+		E09E3DAF289EB26C00B3D775 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E3DAE289EB26C00B3D775 /* Coordinator.swift */; };
 		E0BD721F285374B000A70F00 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD721E285374B000A70F00 /* WebService.swift */; };
 		E0E233C5288446A200417381 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C4288446A200417381 /* EventCard.swift */; };
 		E0E233C7288455F100417381 /* EventUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C6288455F100417381 /* EventUIView.swift */; };
@@ -101,6 +112,8 @@
 		E014CDDC28913529001B4B13 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		E014CDDE2891353D001B4B13 /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
 		E014CDE0289140E2001B4B13 /* PostDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDto.swift; sourceTree = "<group>"; };
+		E01FA3A628C0CD4100FC9699 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		E01FA3AF28C0DE3600FC9699 /* AwsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsService.swift; sourceTree = "<group>"; };
 		E021C8E3285761E900589730 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		E021C8EB2857625700589730 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		E021C8F12857629B00589730 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +134,10 @@
 		E04BEEF3287C3EC400B708CE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E04BEEF5287C422300B708CE /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		E04BEEF7287C4B3B00B708CE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E0544BBC28C5FC68009699B4 /* UserCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreator.swift; sourceTree = "<group>"; };
+		E0544BBE28C74D68009699B4 /* CommentPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPost.swift; sourceTree = "<group>"; };
+		E0544BC028C75717009699B4 /* MediaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRequest.swift; sourceTree = "<group>"; };
+		E0544BC228C757AE009699B4 /* MediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaResponse.swift; sourceTree = "<group>"; };
 		E0568DE0284E4498003788F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E0568DF3284E4E2D003788F5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		E0568DF6284E4FD2003788F5 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -158,6 +175,8 @@
 		E0746996288D93E40066D671 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		E0746998288DBAD10066D671 /* AddCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentView.swift; sourceTree = "<group>"; };
 		E074699A288DF5620066D671 /* CommentDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDto.swift; sourceTree = "<group>"; };
+		E09E3DAC289EB1E500B3D775 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		E09E3DAE289EB26C00B3D775 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E0BD721E285374B000A70F00 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		E0E233C4288446A200417381 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		E0E233C6288455F100417381 /* EventUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUIView.swift; sourceTree = "<group>"; };
@@ -171,6 +190,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E01FA3AC28C0DAED00FC9699 /* AWSS3Control in Frameworks */,
+				E01FA3AE28C0DAED00FC9699 /* AWSS3Outposts in Frameworks */,
+				E01FA3AA28C0DAED00FC9699 /* AWSS3 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +213,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E01FA3A528C0CD2E00FC9699 /* media */ = {
+			isa = PBXGroup;
+			children = (
+				E01FA3A628C0CD4100FC9699 /* Media.swift */,
+				E0544BC028C75717009699B4 /* MediaRequest.swift */,
+				E0544BC228C757AE009699B4 /* MediaResponse.swift */,
+			);
+			path = media;
+			sourceTree = "<group>";
+		};
 		E0448C48285C82700072AFE8 /* modelsMock */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +237,7 @@
 				E0568DE0284E4498003788F5 /* User.swift */,
 				E04BEEF3287C3EC400B708CE /* Login.swift */,
 				E04BEEF5287C422300B708CE /* LoginResponse.swift */,
+				E0544BBC28C5FC68009699B4 /* UserCreator.swift */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -271,6 +304,7 @@
 			children = (
 				E0568E09284E5A7D003788F5 /* Comment.swift */,
 				E074699A288DF5620066D671 /* CommentDto.swift */,
+				E0544BBE28C74D68009699B4 /* CommentPost.swift */,
 			);
 			path = comment;
 			sourceTree = "<group>";
@@ -281,6 +315,8 @@
 				E0BD721E285374B000A70F00 /* WebService.swift */,
 				E05B07E0286314F900206684 /* LoginManager.swift */,
 				E0746996288D93E40066D671 /* PostManager.swift */,
+				E09E3DAE289EB26C00B3D775 /* Coordinator.swift */,
+				E01FA3AF28C0DE3600FC9699 /* AwsService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -348,6 +384,7 @@
 		E068FDDE2843C75A00665C6D /* models */ = {
 			isa = PBXGroup;
 			children = (
+				E01FA3A528C0CD2E00FC9699 /* media */,
 				E0448C48285C82700072AFE8 /* modelsMock */,
 				E0568E08284E5A72003788F5 /* comment */,
 				E0568E05284E597F003788F5 /* conversation */,
@@ -403,6 +440,7 @@
 				E014CDDA28912C09001B4B13 /* AddPostView.swift */,
 				E014CDDC28913529001B4B13 /* AddGroupView.swift */,
 				E014CDDE2891353D001B4B13 /* AddMemberView.swift */,
+				E09E3DAC289EB1E500B3D775 /* ImagePickerView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -435,6 +473,11 @@
 			dependencies = (
 			);
 			name = SocialNetworkApp;
+			packageProductDependencies = (
+				E01FA3A928C0DAED00FC9699 /* AWSS3 */,
+				E01FA3AB28C0DAED00FC9699 /* AWSS3Control */,
+				E01FA3AD28C0DAED00FC9699 /* AWSS3Outposts */,
+			);
 			productName = SocialNetworkApp;
 			productReference = E068FDB12843AEE900665C6D /* SocialNetworkApp.app */;
 			productType = "com.apple.product-type.application";
@@ -507,6 +550,9 @@
 				Base,
 			);
 			mainGroup = E068FDA82843AEE900665C6D;
+			packageReferences = (
+				E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
+			);
 			productRefGroup = E068FDB22843AEE900665C6D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -550,9 +596,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E021C8E4285761E900589730 /* PostViewModel.swift in Sources */,
+				E0544BBF28C74D68009699B4 /* CommentPost.swift in Sources */,
 				E0568DF7284E4FD2003788F5 /* Group.swift in Sources */,
 				E014CDDF2891353D001B4B13 /* AddMemberView.swift in Sources */,
 				E0448C4A285C828B0072AFE8 /* allModelsMocked.swift in Sources */,
+				E0544BC328C757AE009699B4 /* MediaResponse.swift in Sources */,
+				E09E3DAD289EB1E500B3D775 /* ImagePickerView.swift in Sources */,
 				E04BEEF4287C3EC400B708CE /* Login.swift in Sources */,
 				E068FDF02843F73100665C6D /* PipelineUIView.swift in Sources */,
 				E0568DF4284E4E2D003788F5 /* Language.swift in Sources */,
@@ -561,6 +610,7 @@
 				E0568E0A284E5A7D003788F5 /* Comment.swift in Sources */,
 				E05B07E32863262000206684 /* SearchCard.swift in Sources */,
 				E0448C6028606E3F0072AFE8 /* CustomScrollView.swift in Sources */,
+				E0544BC128C75717009699B4 /* MediaRequest.swift in Sources */,
 				E0568E07284E5992003788F5 /* Conversation.swift in Sources */,
 				E0448C56285CC59F0072AFE8 /* SettingsView.swift in Sources */,
 				E0568DFA284E5450003788F5 /* Friendship.swift in Sources */,
@@ -593,9 +643,12 @@
 				E021C8EC2857625700589730 /* GroupViewModel.swift in Sources */,
 				E0E233C5288446A200417381 /* EventCard.swift in Sources */,
 				E068FDEC2843F6EF00665C6D /* ProfilUIView.swift in Sources */,
+				E0544BBD28C5FC68009699B4 /* UserCreator.swift in Sources */,
 				E0448C5C28606BBA0072AFE8 /* ChatModel.swift in Sources */,
 				E0448C54285CC5750072AFE8 /* SettingHeaderCard.swift in Sources */,
 				E0568E04284E5887003788F5 /* EventSearch.swift in Sources */,
+				E09E3DAF289EB26C00B3D775 /* Coordinator.swift in Sources */,
+				E01FA3A728C0CD4100FC9699 /* Media.swift in Sources */,
 				E0448C4C285CB68D0072AFE8 /* SearchView.swift in Sources */,
 				E0E233C928845CD500417381 /* userViewModel.swift in Sources */,
 				E0448C50285CBB180072AFE8 /* OnlineUsersView.swift in Sources */,
@@ -603,6 +656,7 @@
 				E04BEEF8287C4B3B00B708CE /* LoginViewModel.swift in Sources */,
 				E068FDF42843F75800665C6D /* GroupUIView.swift in Sources */,
 				E068FDB72843AEE900665C6D /* HomeUIView.swift in Sources */,
+				E01FA3B028C0DE3700FC9699 /* AwsService.swift in Sources */,
 				E014CDDD28913529001B4B13 /* AddGroupView.swift in Sources */,
 				E05B07DE2861CA7600206684 /* UserSearchCard.swift in Sources */,
 				E0448C5A28606B5C0072AFE8 /* BubblePosition.swift in Sources */,
@@ -772,11 +826,13 @@
 				DEVELOPMENT_TEAM = U93CWA46GL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "camera acces";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -801,11 +857,13 @@
 				DEVELOPMENT_TEAM = U93CWA46GL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "camera acces";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -931,6 +989,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E01FA3A928C0DAED00FC9699 /* AWSS3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSS3;
+		};
+		E01FA3AB28C0DAED00FC9699 /* AWSS3Control */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSS3Control;
+		};
+		E01FA3AD28C0DAED00FC9699 /* AWSS3Outposts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSS3Outposts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E068FDA92843AEE900665C6D /* Project object */;
 }

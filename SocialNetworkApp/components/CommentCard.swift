@@ -12,14 +12,26 @@ struct CommentCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10 ){
             HStack(alignment: .top){
-                Image("profil")
-                    .resizable()
+                if comment.creator.profilePicture != nil {
+                    let key = comment.creator.profilePicture?.key
+                    AsyncImage(url: URL(string: endPoint + key!)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
                     .frame(width: 80, height: 80)
                     .scaledToFit()
                     .cornerRadius(50)
+                }
+                else{
+                    Image("profil")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .scaledToFit()
+                        .cornerRadius(50)
+                }
                 VStack(alignment: .leading, spacing: 10){
-                    let username = (comment.creator != nil) ? comment.creator?.username : "Inconnu"
-                    Text("@" + username!)
+                    Text("@" + comment.creator.username)
                         .font(.title2)
                         .bold()
                         .foregroundColor(.black)

@@ -13,9 +13,8 @@ struct Comment: Codable, Hashable{
     let createdAt: String
     let updatedAt: String?
     let deletedAt: String?
-    let creator: User?
-    let post: PostTimeLine?
-    //let medias: [Media]?
+    let creator: UserCreator
+    let medias: [Media]?
     //let reported: [ReportResponse]?
     
 }

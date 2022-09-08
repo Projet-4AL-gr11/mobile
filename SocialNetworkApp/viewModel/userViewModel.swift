@@ -10,6 +10,7 @@ class UserViewModel: ObservableObject{
     @Published var friends: [User] = []
     @Published var user: User? = nil
     @Published var searchedUser: [User]? = nil
+    let awsService = AwsService()
     
     init(){
         let defaults = UserDefaults.standard

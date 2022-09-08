@@ -11,13 +11,25 @@ struct GroupCard: View {
     @State var group: Group
     var body: some View {
         HStack{
-            Image(systemName: "person.3.sequence.fill")
-                .resizable()
-                .frame(width: 35, height: 35)
+            if group.picture != nil{
+                AsyncImage(url: URL(string: endPoint + group.picture!.key)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 30, height: 30)
                 .padding()
-                .foregroundColor(.white)
-                .background(.green)
                 .cornerRadius(50)
+            }
+            else{
+                Image(systemName: "rectangle.3.group.bubble.left")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(.green)
+                    .cornerRadius(50)
+            }
             Text(group.name)
                 .font(.title2)
             Spacer()

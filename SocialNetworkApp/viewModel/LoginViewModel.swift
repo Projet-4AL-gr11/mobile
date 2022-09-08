@@ -28,7 +28,6 @@ class LoginViewModel : ObservableObject {
                 print(error.localizedDescription)
             }
         }
-        
     }
     func logout() {
         let defaults = UserDefaults.standard

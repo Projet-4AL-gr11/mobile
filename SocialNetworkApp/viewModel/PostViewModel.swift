@@ -7,11 +7,12 @@
 
 import Foundation
 class PostViewModel : ObservableObject {
-    
+    @Published var sharedPost: PostTimeLine?
     @Published var posts: [PostTimeLine] = []
     
     init() {
         getTimeline()
+        sharedPost  = nil
     }
     
     func getTimeline(){
@@ -30,8 +31,7 @@ class PostViewModel : ObservableObject {
                     self.posts = post
                 }
             case .failure(let error):
-                print("error can't retrieve data")
-                print("another print for token: \(token)")
+                print("impossible de decoder les posts")
                 print(error.localizedDescription)
             }
         }
@@ -49,8 +49,10 @@ class PostViewModel : ObservableObject {
         WebService.makePost(token: token, text: text) {result in
             
             switch result {
-            case .success(_):
-                self.getTimeline()
+            case .success(let post):
+                DispatchQueue.main.async {
+                    self.sharedPost = post
+                }
             case .failure(let error):
                 isDone = false
                 print("error can't retrieve data")
@@ -58,6 +60,27 @@ class PostViewModel : ObservableObject {
             }
         }
         return isDone
+    }
+    
+    func uploadMedia(postId: String, data: Data) -> Bool {
+        let defaults = UserDefaults.standard
+        var withImage = true
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return false
+        }
+        WebService.addMedia(token: token, postId: postId, file: data) {result in
+            switch result {
+            case .success(_):
+                self.getTimeline()
+            case .failure(let error):
+                print("error can't add post Media")
+                print(error.localizedDescription)
+                withImage = false
+            }
+        }
+        return withImage
     }
     
 

@@ -1,14 +1,13 @@
 //
-//  User.swift
+//  UserCreator.swift
 //  SocialNetworkApp
 //
-//  Created by Ahamad Ben on 06/06/2022.
+//  Created by Ahamad Ben on 05/09/2022.
 //
 
 import Foundation
 
-struct User: Codable, Hashable {
+struct UserCreator: Codable, Hashable {
     let id, email, username, userType, bio: String
     let profilePicture: Media?
-    let bannerPicture: Media?
 }

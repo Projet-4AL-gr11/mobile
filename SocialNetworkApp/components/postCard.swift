@@ -15,11 +15,24 @@ struct postCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10 ){
             HStack(alignment: .top){
-                Image("Shezad")
-                    .resizable()
-                    .frame(width: 80, height: 80)
+                if post.creator.profilePicture != nil{
+                    AsyncImage(url: URL(string: endPoint + post.creator.profilePicture!.key)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 50, height: 50)
                     .scaledToFit()
                     .cornerRadius(50)
+                }
+                else{
+                    Image("no-profile")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .scaledToFit()
+                        .cornerRadius(50)
+                }
+                
                 VStack(alignment: .leading, spacing: 10){
                     Text("@" + post.creator.username)
                         .font(.title2)
@@ -30,12 +43,18 @@ struct postCard: View {
                             .font(.body)
                             .foregroundColor(.gray)
                     }
-                    
-                    Image("postImage")
-                        .resizable()
-                        .frame(width:300, height: 200)
-                        .scaledToFit()
-                        .cornerRadius(20)
+                    if post.medias != nil && post.medias!.count > 0{
+                        let key = post.medias![0].key
+                        AsyncImage(url: URL(string: endPoint + key)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 300, height: 200)
+                        .cornerRadius(10)
+                        .padding()
+                        
+                    }
                     HStack(alignment: .center, spacing: 40){
                             Button{
                                 self.showCommentView = true

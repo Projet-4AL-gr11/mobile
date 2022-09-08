@@ -10,11 +10,12 @@ struct PostTimeLine: Codable, Hashable{
     
     let id, text : String
     let createdAt, updatedAt, deletedAt: String?
-    let creator: User
+    let creator: UserCreator
+    let medias : [Media]?
     let sharedEvent: SharedEvent?
     let group: Group?
-    let comments: [Comment]?
+    let comments: [CommentPost]?
+    //var sharesPost: String?
+    //var sharedPosts: [PostTimeLine]?
 }
 
-
-        

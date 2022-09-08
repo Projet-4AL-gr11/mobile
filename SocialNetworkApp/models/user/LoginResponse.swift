@@ -9,8 +9,8 @@ import Foundation
 struct LoginResponse: Codable {
     let id: String?
     let username: String?
-    let profilePicture: String?
-    let bannerPicture: String?
+    let profilePicture: Media?
+    let bannerPicture: Media?
     let currentHashedRefreshToken: String
     let jwtToken: String
 }
