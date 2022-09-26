@@ -24,9 +24,6 @@ class PostManager: ObservableObject {
             print("can't get token")
             return
         }
-        
-        print("here you should get the token : \(token)")
-        
         WebService.getLikes(token: token, postId: postId ) {result in
             
             switch result {
@@ -48,9 +45,6 @@ class PostManager: ObservableObject {
             print("can't get token")
             return
         }
-        
-        print("here you should get the token : \(token)")
-        
         WebService.isLiked(token: token, postId: postId ) {result in
             
             switch result {
@@ -72,9 +66,6 @@ class PostManager: ObservableObject {
             print("can't get token")
             return
         }
-        
-        print("here you should get the token : \(token)")
-        
         WebService.getComment(token: token, postId: postId ) {result in
             
             switch result {
@@ -142,7 +133,6 @@ class PostManager: ObservableObject {
             return
         }
         WebService.addCommente(token: token, postId: postId, comment: comment) {result in
-            
             switch result {
             case .success(let comments):
                 print("post \(postId) commented")

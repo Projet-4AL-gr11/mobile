@@ -10,7 +10,6 @@ class UserViewModel: ObservableObject{
     @Published var friends: [User] = []
     @Published var user: User? = nil
     @Published var searchedUser: [User]? = nil
-    let awsService = AwsService()
     
     init(){
         let defaults = UserDefaults.standard
@@ -29,9 +28,6 @@ class UserViewModel: ObservableObject{
             print("can't get token")
             return
         }
-        
-        print("here you should get the token : \(token)")
-        
         WebService.getFriends(token: token, userId: userId) {result in
             
             switch result {
@@ -52,9 +48,6 @@ class UserViewModel: ObservableObject{
             print("can't get token")
             return
         }
-        
-        print("here you should get the token : \(token)")
-        
         WebService.getUserById(token: token, userId: userId) {result in
             
             switch result {
@@ -75,9 +68,6 @@ class UserViewModel: ObservableObject{
             print("can't get token")
             return
         }
-        
-        print("here you should get the token : \(token)")
-        
         WebService.getUserByName(token: token, name: name) {result in
             
             switch result {

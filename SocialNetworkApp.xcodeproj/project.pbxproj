@@ -15,10 +15,6 @@
 		E014CDDF2891353D001B4B13 /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014CDDE2891353D001B4B13 /* AddMemberView.swift */; };
 		E014CDE1289140E2001B4B13 /* PostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014CDE0289140E2001B4B13 /* PostDto.swift */; };
 		E01FA3A728C0CD4100FC9699 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01FA3A628C0CD4100FC9699 /* Media.swift */; };
-		E01FA3AA28C0DAED00FC9699 /* AWSS3 in Frameworks */ = {isa = PBXBuildFile; productRef = E01FA3A928C0DAED00FC9699 /* AWSS3 */; };
-		E01FA3AC28C0DAED00FC9699 /* AWSS3Control in Frameworks */ = {isa = PBXBuildFile; productRef = E01FA3AB28C0DAED00FC9699 /* AWSS3Control */; };
-		E01FA3AE28C0DAED00FC9699 /* AWSS3Outposts in Frameworks */ = {isa = PBXBuildFile; productRef = E01FA3AD28C0DAED00FC9699 /* AWSS3Outposts */; };
-		E01FA3B028C0DE3700FC9699 /* AwsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01FA3AF28C0DE3600FC9699 /* AwsService.swift */; };
 		E021C8E4285761E900589730 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021C8E3285761E900589730 /* PostViewModel.swift */; };
 		E021C8EC2857625700589730 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021C8EB2857625700589730 /* GroupViewModel.swift */; };
 		E021C8F22857629B00589730 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021C8F12857629B00589730 /* EventViewModel.swift */; };
@@ -113,7 +109,6 @@
 		E014CDDE2891353D001B4B13 /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
 		E014CDE0289140E2001B4B13 /* PostDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDto.swift; sourceTree = "<group>"; };
 		E01FA3A628C0CD4100FC9699 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
-		E01FA3AF28C0DE3600FC9699 /* AwsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsService.swift; sourceTree = "<group>"; };
 		E021C8E3285761E900589730 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		E021C8EB2857625700589730 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		E021C8F12857629B00589730 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -190,9 +185,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01FA3AC28C0DAED00FC9699 /* AWSS3Control in Frameworks */,
-				E01FA3AE28C0DAED00FC9699 /* AWSS3Outposts in Frameworks */,
-				E01FA3AA28C0DAED00FC9699 /* AWSS3 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +308,6 @@
 				E05B07E0286314F900206684 /* LoginManager.swift */,
 				E0746996288D93E40066D671 /* PostManager.swift */,
 				E09E3DAE289EB26C00B3D775 /* Coordinator.swift */,
-				E01FA3AF28C0DE3600FC9699 /* AwsService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -344,10 +335,10 @@
 		E068FDB32843AEE900665C6D /* SocialNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				E068FDDF2843C76600665C6D /* components */,
 				E05B07DF2863147900206684 /* service */,
 				E068FDE22843C78900665C6D /* viewModel */,
 				E068FDE02843C77200665C6D /* views */,
-				E068FDDF2843C76600665C6D /* components */,
 				E068FDDE2843C75A00665C6D /* models */,
 				E068FDB42843AEE900665C6D /* SocialNetworkAppApp.swift */,
 				E068FDB82843AEED00665C6D /* Assets.xcassets */,
@@ -474,9 +465,6 @@
 			);
 			name = SocialNetworkApp;
 			packageProductDependencies = (
-				E01FA3A928C0DAED00FC9699 /* AWSS3 */,
-				E01FA3AB28C0DAED00FC9699 /* AWSS3Control */,
-				E01FA3AD28C0DAED00FC9699 /* AWSS3Outposts */,
 			);
 			productName = SocialNetworkApp;
 			productReference = E068FDB12843AEE900665C6D /* SocialNetworkApp.app */;
@@ -551,7 +539,6 @@
 			);
 			mainGroup = E068FDA82843AEE900665C6D;
 			packageReferences = (
-				E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
 			);
 			productRefGroup = E068FDB22843AEE900665C6D /* Products */;
 			projectDirPath = "";
@@ -656,7 +643,6 @@
 				E04BEEF8287C4B3B00B708CE /* LoginViewModel.swift in Sources */,
 				E068FDF42843F75800665C6D /* GroupUIView.swift in Sources */,
 				E068FDB72843AEE900665C6D /* HomeUIView.swift in Sources */,
-				E01FA3B028C0DE3700FC9699 /* AwsService.swift in Sources */,
 				E014CDDD28913529001B4B13 /* AddGroupView.swift in Sources */,
 				E05B07DE2861CA7600206684 /* UserSearchCard.swift in Sources */,
 				E0448C5A28606B5C0072AFE8 /* BubblePosition.swift in Sources */,
@@ -826,7 +812,8 @@
 				DEVELOPMENT_TEAM = U93CWA46GL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "camera acces";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) camera use";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) photo use";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -857,7 +844,8 @@
 				DEVELOPMENT_TEAM = U93CWA46GL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "camera acces";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) camera use";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) photo use";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -989,35 +977,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.6;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E01FA3A928C0DAED00FC9699 /* AWSS3 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = AWSS3;
-		};
-		E01FA3AB28C0DAED00FC9699 /* AWSS3Control */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = AWSS3Control;
-		};
-		E01FA3AD28C0DAED00FC9699 /* AWSS3Outposts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E01FA3A828C0DAED00FC9699 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = AWSS3Outposts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E068FDA92843AEE900665C6D /* Project object */;
 }

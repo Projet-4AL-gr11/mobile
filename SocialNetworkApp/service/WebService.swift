@@ -66,12 +66,10 @@ struct WebService {
                 completion(.failure(.custom(Message: "no data")))
                 return
             }
-            print("")
             guard let posts = try? JSONDecoder().decode([PostTimeLine].self, from: data) else {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
-            print(posts.self)
             completion(.success(posts))
             
         }.resume()
@@ -130,12 +128,8 @@ struct WebService {
             }
             guard let post = try? JSONDecoder().decode(PostTimeLine.self, from: data) else {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
-                
                 return
             }
-
-            print(post.self)
-            
             completion(.success(post))
             
         }.resume()
@@ -167,9 +161,6 @@ struct WebService {
                 
                 return
             }
-
-            print(group.self)
-            
             completion(.success(group))
             
         }.resume()
@@ -195,9 +186,6 @@ struct WebService {
                 
                 return
             }
-
-            print(groups.self)
-            
             completion(.success(groups))
             
         }.resume()
@@ -223,9 +211,6 @@ struct WebService {
                 
                 return
             }
-
-            print(members.self)
-            
             completion(.success(members))
             
         }.resume()
@@ -322,9 +307,7 @@ struct WebService {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
-            print(comments.self)
             completion(.success(comments))
-            
         }.resume()
     }
     
@@ -346,9 +329,7 @@ struct WebService {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
-            print(friends.self)
             completion(.success(friends))
-            
         }.resume()
         
     }
@@ -372,9 +353,7 @@ struct WebService {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
-            print(user.self)
             completion(.success(user))
-            
         }.resume()
         
     }
@@ -397,9 +376,7 @@ struct WebService {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
-            print(user.self)
             completion(.success(user))
-            
         }.resume()
         
     }
@@ -424,9 +401,7 @@ struct WebService {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
-            print(user.self)
             completion(.success(user))
-            
         }.resume()
         
     }
@@ -448,9 +423,7 @@ struct WebService {
                 completion(.failure(.custom(Message: "unable to deserialize data")))
                 return
             }
-            print(response.self)
             completion(.success(response))
-            
         }.resume()
         
     }
@@ -475,11 +448,7 @@ struct WebService {
                 
                 return
             }
-
-            print(posts.self)
-            
             completion(.success(posts))
-            
         }.resume()
         
     }
@@ -503,11 +472,7 @@ struct WebService {
                 
                 return
             }
-
-            print(users.self)
-            
             completion(.success(users))
-            
         }.resume()
         
     }
@@ -549,7 +514,6 @@ struct WebService {
                 completion(.failure(.custom(Message: "no data")))
                 return
             }
-            print(data.self)
             completion(.success(data.self))
         }.resume()
     }
@@ -573,35 +537,41 @@ struct WebService {
                 
                 return
             }
-
-            print(posts.self)
-            
             completion(.success(posts))
             
         }.resume()
         
     }
-    
-    static func addMedia(token: String, postId: String, file: Data, completion: @escaping (Result<Bool, RetrievePostError>) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/postPicture/" + postId) else{
+    // don' touvh this part i spend a lot of time on !!
+    static func uploadImage(token: String, imageData: Data, postId: String,  completion: @escaping (Result<Bool, RetrievePostError>) -> Void) {
+        // generate boundary string using a unique string
+        let boundary = UUID().uuidString
+        guard let url = URL(string: "http://localhost:3000/media/postPicture/"+postId) else{
             completion(.failure(.custom(Message: "network error")))
             return
         }
-        let body = MediaRequest(file: file)
+        // Set the URLRequest to POST and to the specified URL
         var request = URLRequest(url: url)
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        request.httpBody = try? JSONEncoder().encode(body)
-
-        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        // Content-Type is multipart/form-data, this is the same as submitting form data with file upload
+        // in a web browser
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        let paramName = "file"
+        let mimetype = "image/jpeg"
+        let fileName = UUID().uuidString+".jpeg"
+        var data = Data()
+        // Add the file data to the raw http request data
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"\(paramName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Type: \(mimetype)\r\n\r\n".data(using: .utf8)!)
+        data.append(imageData)
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        // do not forget to set the content-length!
+        request.setValue(String(data.count), forHTTPHeaderField: "Content-Length")
+        request.httpBody = data
+        print("in that damn function")
+        URLSession.shared.uploadTask(with: request, from: data).resume()
             
-            guard let _ = data, error == nil else {
-                completion(.failure(.custom(Message: "no data")))
-                return
-            }
-           
-            completion(.success(true))
-        }.resume()
     }
 }

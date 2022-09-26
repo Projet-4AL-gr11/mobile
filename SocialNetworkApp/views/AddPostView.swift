@@ -8,9 +8,9 @@ import SwiftUI
 import PhotosUI
 
 struct AddPostView: View {
-    @State private var selectedItem: PhotosPickerItem? = nil
-    @State private var selectedImageData: Data? = nil
-    
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var selectedImage: UIImage?
+    @State private var isImagePickerDisplay = false
     @StateObject var postViewModel = PostViewModel()
     @State var text: String = ""
     @State var message = ""
@@ -19,7 +19,14 @@ struct AddPostView: View {
        
     var body: some View {
         VStack(alignment: .leading, spacing: 15){
-            
+            if selectedImage != nil {
+                Image(uiImage: selectedImage!)
+                    .resizable()
+                    .clipShape(Rectangle())
+                    .frame(width: 350, height: 250)
+                    .cornerRadius(10)
+                    .padding()
+            }
             TextField("ajouter un pos", text: $text)
                 .frame(width: 350, height: 100)
                 .border(.gray)
@@ -27,23 +34,6 @@ struct AddPostView: View {
     
             HStack {
                 
-                PhotosPicker(
-                    selection: $selectedItem,
-                    matching: .images,
-                    photoLibrary: .shared()) {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }
-                    .onChange(of: selectedItem) { newItem in
-                        Task {
-                            // Retrieve selected asset in the form of Data
-                            if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                selectedImageData = data
-                            }
-                        }
-                    }
-                }
                 Button{
                     self.sourceType = .camera
                     self.isImagePickerDisplay.toggle()
@@ -52,12 +42,28 @@ struct AddPostView: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                 }
+                Button{
+                    self.sourceType = .photoLibrary
+                    self.isImagePickerDisplay.toggle()
+                } label: {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                }.padding()
                 
                 Spacer()
                 Button{
-                    if text.count > 0{
-                        message = postViewModel.makePost(text: text) ? "Poste ajouté" : "erreur"
-                        postViewModel.getTimeline()
+                    if text.count > 0 {
+                        guard let selectedImageData = selectedImage?.jpegData(compressionQuality: 0.5) else {
+                            postViewModel.makePost(text: text, media: nil)
+                            message = "post added without Media"
+                            print(message)
+                            self.showToast.toggle()
+                            return
+                        }
+                        postViewModel.makePost(text: text, media: selectedImageData)
+                        message = "post with media"
+                        print(message)
                         self.showToast.toggle()
                     }
                     dismiss()
@@ -66,22 +72,18 @@ struct AddPostView: View {
                 }.alert(isPresented: $showToast) {
                     Alert(title: Text(message))
                 }
-            if selectedImageData != nil {
-                let uiImage = UIImage(data: selectedImageData)
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 250, height: 250)
-                }
             }
         }
+        .padding()
         .navigationTitle("Ajouter un post")
+        .sheet(isPresented: self.$isImagePickerDisplay) {
+            ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+        }
     }
-
 
 struct AddPostView_Previews: PreviewProvider {
     static var previews: some View {
         AddPostView()
     }
+    }
 }
-

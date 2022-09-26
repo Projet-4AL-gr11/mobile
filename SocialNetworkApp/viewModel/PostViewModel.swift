@@ -7,12 +7,11 @@
 
 import Foundation
 class PostViewModel : ObservableObject {
-    @Published var sharedPost: PostTimeLine?
     @Published var posts: [PostTimeLine] = []
+
     
     init() {
         getTimeline()
-        sharedPost  = nil
     }
     
     func getTimeline(){
@@ -37,32 +36,29 @@ class PostViewModel : ObservableObject {
         }
     }
     
-    func makePost(text: String) -> Bool {
+    func makePost(text: String, media: Data?) {
         let defaults = UserDefaults.standard
-        var isDone: Bool = true
 
         guard let token = defaults.string(forKey: "jwtToken") else {
             print("can't get token")
-            return false
+            return
         }
-                
         WebService.makePost(token: token, text: text) {result in
-            
             switch result {
             case .success(let post):
-                DispatchQueue.main.async {
-                    self.sharedPost = post
+                if media != nil {
+                    print("niveau media ok")
+                    let _ = self.uploadImage(postId: post.id, data: media!)
                 }
             case .failure(let error):
-                isDone = false
                 print("error can't retrieve data")
                 print(error.localizedDescription)
             }
         }
-        return isDone
+        return
     }
     
-    func uploadMedia(postId: String, data: Data) -> Bool {
+    func uploadImage(postId: String, data: Data) -> Bool {
         let defaults = UserDefaults.standard
         var withImage = true
 
@@ -70,7 +66,7 @@ class PostViewModel : ObservableObject {
             print("can't get token")
             return false
         }
-        WebService.addMedia(token: token, postId: postId, file: data) {result in
+        WebService.uploadImage(token: token, imageData: data, postId: postId) {result in
             switch result {
             case .success(_):
                 self.getTimeline()
@@ -82,6 +78,5 @@ class PostViewModel : ObservableObject {
         }
         return withImage
     }
-    
 
 }

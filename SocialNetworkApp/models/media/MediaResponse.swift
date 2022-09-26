@@ -9,4 +9,6 @@ import Foundation
 struct MediaResponse: Codable, Hashable {
     let link: String
     let media: Media
+    
+    
 }
