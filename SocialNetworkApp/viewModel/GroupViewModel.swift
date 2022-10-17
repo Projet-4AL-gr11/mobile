@@ -10,6 +10,7 @@ class GroupModelView: ObservableObject{
     @Published var groupList: [Group] = []
     @Published var groupMembers: [GroupMembers] = []
     @Published var searchedUser: User? = nil
+    @Published var groupFollowers: [GroupFollowers] = []
     
     init() {
         getGroup()
@@ -55,6 +56,29 @@ class GroupModelView: ObservableObject{
             case .success(let members):
                 DispatchQueue.main.async {
                     self.groupMembers = members
+                }
+            case .failure(let error):
+                print("can't retrieves groups")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    func getGroupFollowers(groupId: String){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        
+        print("here you should get the token : \(token)")
+        
+        WebService.getGroupFollowers(token: token, groupId: groupId) {result in
+            
+            switch result {
+            case .success(let followers):
+                DispatchQueue.main.async {
+                    self.groupFollowers = followers
                 }
             case .failure(let error):
                 print("can't retrieves groups")

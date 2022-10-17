@@ -82,6 +82,9 @@ struct GroupListView: View {
             .navigationTitle(Text("groupes"))
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear{
+            groupViewModel.getGroup()
+        }
 
         
     }

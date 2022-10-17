@@ -21,13 +21,13 @@ struct GroupUIView: View {
                 VStack{
                     ScrollView(showsIndicators: false){
                         VStack(alignment: .leading, spacing: 5){
-                           SearchCard(searchText: $searchText)
+                           //SearchCard(searchText: $searchText)
                             HStack{
                                 Text("Participants:")
                                     .font(.title3)
                                     .bold()
-                                if groupModelView.groupMembers.count > 0 {
-                                    Text(String(groupModelView.groupMembers.count))
+                                if groupModelView.groupFollowers.count > 0 {
+                                    Text(String(groupModelView.groupFollowers.count))
                                         .foregroundColor(.white)
                                         .frame(width: 25, height: 25)
                                         .background(.blue)
@@ -40,17 +40,16 @@ struct GroupUIView: View {
                                         .cornerRadius(50)
                                 }
                             }
-                            
-                                                   
                             Divider()
                                 .padding(.bottom, 20)
                             
                             LazyVGrid(columns: columns, spacing: 20){
                                
-                                if groupModelView.groupMembers.count > 0 {
-                                    ForEach(groupModelView.groupMembers, id: \.self) { member in
+                                if groupModelView.groupFollowers.count > 0 {
+                                    ForEach(groupModelView.groupFollowers, id: \.self) { member in
                                         NavigationLink(destination: ChatUIView()){
-                                            UserCard(user: member.user)
+                                            //UserCard(user: member.user)
+                                            GroupFollowerCard(follower: member)
                                         }
                                     }
                                 }
@@ -99,7 +98,7 @@ struct GroupUIView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     private func fetch(){
-        groupModelView.getGroupMembers(groupId: group.id)
+        groupModelView.getGroupFollowers(groupId: group.id)
     }
 }
 

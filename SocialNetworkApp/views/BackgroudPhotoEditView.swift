@@ -1,22 +1,20 @@
 //
-//  AddPostView.swift
+//  BackgroudPhotoEditView.swift
 //  SocialNetworkApp
 //
-//  Created by Ahamad Ben on 27/07/2022.
+//  Created by Ahamad Ben on 26/09/2022.
 //
-import SwiftUI
-import PhotosUI
 
-struct AddPostView: View {
+import SwiftUI
+
+struct BannerPhotoEditView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
-    @StateObject var postViewModel = PostViewModel()
-    @State var text: String = ""
+    @StateObject var userViewModel = UserViewModel()
     @State var message = ""
     @State private var showToast = false
     @Environment(\.dismiss) var dismiss
-   
        
     var body: some View {
         VStack(alignment: .leading, spacing: 15){
@@ -28,11 +26,6 @@ struct AddPostView: View {
                     .cornerRadius(10)
                     .padding()
             }
-            TextField("ajouter un pos", text: $text)
-                .frame(width: 350, height: 100)
-                .border(.gray)
-                .cornerRadius(20)
-    
             HStack {
                 
                 Button{
@@ -54,37 +47,30 @@ struct AddPostView: View {
                 
                 Spacer()
                 Button{
-                    if text.count > 0 {
-                        guard let selectedImageData = selectedImage?.jpegData(compressionQuality: 0.5) else {
-                            postViewModel.makePost(text: text, media: nil)
-                            message = "post added without Media"
-                            print(message)
-                            self.showToast.toggle()
-                            return
-                        }
-                        postViewModel.makePost(text: text, media: selectedImageData)
-                        message = "post with media"
-                        print(message)
+                    guard let selectedImageData = selectedImage?.jpegData(compressionQuality: 0.5) else {
                         self.showToast.toggle()
+                        dismiss()
+                        return
                     }
+                    userViewModel.changeBanner(bannerImage: selectedImageData)
                     dismiss()
                 } label: {
-                    Text("Publier")
+                    Text("Choisir")
                 }.alert(isPresented: $showToast) {
                     Alert(title: Text(message))
                 }
             }
         }
         .padding()
-        .navigationTitle("Ajouter un post")
+        .navigationTitle("Bannier")
         .sheet(isPresented: self.$isImagePickerDisplay) {
             ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
         }
     }
+}
 
-struct AddPostView_Previews: PreviewProvider {
+struct BackgroudPhotoEditView_Previews: PreviewProvider {
     static var previews: some View {
-        AddPostView()
-    }
+        BannerPhotoEditView()
     }
 }

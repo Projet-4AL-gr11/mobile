@@ -217,6 +217,29 @@ struct WebService {
         
     }
     
+    static func getGroupFollowers(token: String, groupId: String, completion: @escaping (Result<[GroupFollowers], RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/group/followers/" + groupId) else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            guard let users = try? JSONDecoder().decode([GroupFollowers].self, from: data) else {
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                return
+            }
+            completion(.success(users))
+        }.resume()
+        
+    }
+    
     static func likePost(token: String, postId: String, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
         guard let url = URL(string: "http://localhost:3000/post/like/" + postId) else{
             completion(.failure(.custom(Message: "network error")))
@@ -453,30 +476,6 @@ struct WebService {
         
     }
     
-    static func getGroupMember(token: String, groupId: String, completion: @escaping (Result<[User], RetrievePostError>) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/group/followers/" + groupId) else{
-            completion(.failure(.custom(Message: "network error")))
-            return
-        }
-        var request = URLRequest(url: url)
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        URLSession.shared.dataTask(with: request) { ( data, response, error) in
-            
-            guard let data = data, error == nil else {
-                completion(.failure(.custom(Message: "no data")))
-                return
-            }
-            guard let users = try? JSONDecoder().decode([User].self, from: data) else {
-                completion(.failure(.custom(Message: "unable to deserialize data")))
-                
-                return
-            }
-            completion(.success(users))
-        }.resume()
-        
-    }
-    
     static func joinGroup(token: String, groupId: String, user: User, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
         guard let url = URL(string: "http://localhost:3000/group/addFollower/" + groupId) else{
             completion(.failure(.custom(Message: "network error")))
@@ -570,7 +569,68 @@ struct WebService {
         // do not forget to set the content-length!
         request.setValue(String(data.count), forHTTPHeaderField: "Content-Length")
         request.httpBody = data
-        print("in that damn function")
+        URLSession.shared.uploadTask(with: request, from: data).resume()
+            
+    }
+    
+    static func changeProfil(token: String, imageData: Data, completion: @escaping (Result<Bool, RetrievePostError>) -> Void) {
+        // generate boundary string using a unique string
+        let boundary = UUID().uuidString
+        guard let url = URL(string: "http://localhost:3000/media/profilePicture/") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        // Set the URLRequest to POST and to the specified URL
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        // Content-Type is multipart/form-data, this is the same as submitting form data with file upload
+        // in a web browser
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        let paramName = "file"
+        let mimetype = "image/jpeg"
+        let fileName = UUID().uuidString+".jpeg"
+        var data = Data()
+        // Add the file data to the raw http request data
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"\(paramName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Type: \(mimetype)\r\n\r\n".data(using: .utf8)!)
+        data.append(imageData)
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        // do not forget to set the content-length!
+        request.setValue(String(data.count), forHTTPHeaderField: "Content-Length")
+        request.httpBody = data
+        URLSession.shared.uploadTask(with: request, from: data).resume()
+            
+    }
+    
+    static func ChangeBanner(token: String, imageData: Data, completion: @escaping (Result<Bool, RetrievePostError>) -> Void) {
+        // generate boundary string using a unique string
+        let boundary = UUID().uuidString
+        guard let url = URL(string: "http://localhost:3000/media/bannerPicture/") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        // Set the URLRequest to POST and to the specified URL
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        // Content-Type is multipart/form-data, this is the same as submitting form data with file upload
+        // in a web browser
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        let paramName = "file"
+        let mimetype = "image/jpeg"
+        let fileName = UUID().uuidString+".jpeg"
+        var data = Data()
+        // Add the file data to the raw http request data
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"\(paramName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Type: \(mimetype)\r\n\r\n".data(using: .utf8)!)
+        data.append(imageData)
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        // do not forget to set the content-length!
+        request.setValue(String(data.count), forHTTPHeaderField: "Content-Length")
+        request.httpBody = data
         URLSession.shared.uploadTask(with: request, from: data).resume()
             
     }

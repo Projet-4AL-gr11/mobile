@@ -21,6 +21,41 @@ class UserViewModel: ObservableObject{
         
     }
     
+    func changeBanner(bannerImage: Data){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        WebService.ChangeBanner(token: token, imageData: bannerImage) { result in
+            switch result {
+            case .success(_):
+               print("banner changed")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func changeProfil(profilImage: Data){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        WebService.changeProfil(token: token, imageData: profilImage) { result in
+            switch result {
+            case .success(_):
+               print("profil changed")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
     func getFriends(userId: String){
         let defaults = UserDefaults.standard
 
