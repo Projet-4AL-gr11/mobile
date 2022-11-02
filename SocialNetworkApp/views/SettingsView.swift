@@ -24,6 +24,9 @@ struct SettingsView: View {
                                 NavigationLink(destination: FriendListUIView(userViewModel: UserViewModel())){
                                     SettingCard(icon: "person.fill.checkmark", title: "Amis")
                                 }
+                                NavigationLink(destination: FriendRequestlistView(userViewModel: UserViewModel())){
+                                    SettingCard(icon: "person.2", title: "Demande d'ami")
+                                }
                                 SettingCard(icon: "lock", title: "Securite")
                                 NavigationLink(destination: EventUIView(eventViewModel: EventViewModel())){
                                     SettingCard(icon: "chevron.left.forwardslash.chevron.right", title: "Evenement")

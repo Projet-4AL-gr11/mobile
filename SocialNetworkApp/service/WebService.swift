@@ -76,6 +76,30 @@ struct WebService {
         
     }
     
+    static func getFriendPosts(token: String, userId: String, completion: @escaping (Result<[PostTimeLine], RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/post/getUserPost/\(userId)/0/100") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            guard let posts = try? JSONDecoder().decode([PostTimeLine].self, from: data) else {
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                return
+            }
+            completion(.success(posts))
+            
+        }.resume()
+        
+    }
+    
     static func getEvent(token: String, completion: @escaping (Result<[SharedEvent], RetrievePostError>) -> Void) {
         guard let url = URL(string: "http://localhost:3000/event/") else{
             completion(.failure(.custom(Message: "network error")))
@@ -311,6 +335,119 @@ struct WebService {
         }.resume()
         
     }
+    
+    static func friendShipRequest(token: String, userId: String, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/friendship/sendFriendshipRequest/" + userId) else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            
+            completion(.success(data.self))
+            
+        }.resume()
+        
+    }
+    
+    static func acceptFriendship(token: String, userId: String, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/friendship/acceptFriendshipRequest/" + userId) else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "PUT"
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            
+            completion(.success(data.self))
+            
+        }.resume()
+        
+    }
+    
+    static func rejectFriendshipRequest(token: String, userId: String, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/friendship/\(userId)/reject") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "DELETE"
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            
+            completion(.success(data.self))
+            
+        }.resume()
+        
+    }
+    
+    static func cancelFriendshipRequest(token: String, userId: String, completion: @escaping (Result<Any, RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/friendship/\(userId)/cancel") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            
+            completion(.success(data.self))
+            
+        }.resume()
+        
+    }
+    
+    static func listfriendShipRequest(token: String, completion: @escaping (Result<[FriendShipList], RetrievePostError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/friendship/received-friendship-request") else{
+            completion(.failure(.custom(Message: "network error")))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: request) { ( data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(Message: "no data")))
+                return
+            }
+            
+            guard let list = try? JSONDecoder().decode([FriendShipList].self, from: data) else {
+                completion(.failure(.custom(Message: "unable to deserialize data")))
+                return
+            }
+            completion(.success(list.self))
+            
+        }.resume()
+        
+    }
+    
     
     static func getComment(token: String, postId: String, completion: @escaping (Result<[Comment], RetrievePostError>) -> Void) {
         guard let url = URL(string: "http://localhost:3000/comment/getPostComments/" + postId) else{

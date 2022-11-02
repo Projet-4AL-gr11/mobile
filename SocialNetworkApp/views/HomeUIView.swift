@@ -31,15 +31,15 @@ struct HomeUIView: View {
                 .tabItem {
                     Label("groupe", systemImage: "rectangle.3.group.bubble.left")
                 }
-            
-            ChatListUIView(searchText: "")
-                .tabItem {
-                    Label("discussion", systemImage: "person.2")
-                }
 
             SettingsView(user: user, loginManager: loginManager)
                 .tabItem {
                     Label("profil", systemImage: "person.circle")
+                }
+            
+            AddFriendView()
+                .tabItem {
+                    Label("recherche", systemImage: "magnifyingglass")
                 }
             
         }

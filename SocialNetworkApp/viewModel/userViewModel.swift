@@ -10,6 +10,7 @@ class UserViewModel: ObservableObject{
     @Published var friends: [User] = []
     @Published var user: User? = nil
     @Published var searchedUser: [User]? = nil
+    @Published var friendshipRequestList: [FriendShipList] = []
     
     init(){
         let defaults = UserDefaults.standard
@@ -18,6 +19,7 @@ class UserViewModel: ObservableObject{
         }
         getFriends(userId: userId)
         getUserById(userId: userId)
+        getfriendShipRequest()
         
     }
     
@@ -112,6 +114,94 @@ class UserViewModel: ObservableObject{
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func followUser(userId: String){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        WebService.friendShipRequest(token: token, userId: userId) { result in
+            switch result {
+                case .success(_):
+                    print("friendship request sent for userId: \(userId)")
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func acceptFreindShipRequest(userId: String){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        WebService.acceptFriendship(token: token, userId: userId) { result in
+            switch result {
+                case .success(_):
+                    print("friendship request accepted sent for userId: \(userId)")
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getfriendShipRequest(){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        WebService.listfriendShipRequest(token: token) { result in
+            switch result {
+                case .success(let requests): // definir la valeur de retour inchallah ce soir
+                DispatchQueue.main.async {
+                    self.friendshipRequestList = requests
+                }
+                    print("friendship request listed")
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func cancelFriendshipRequest(userId: String){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        WebService.cancelFriendshipRequest(token: token, userId: userId) { result in
+            switch result {
+                case .success(_):
+                    print("friendship  canceled for userId: \(userId)")
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func rejectFriendshipRequest(userId: String){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+        WebService.rejectFriendshipRequest(token: token, userId: userId) { result in
+            switch result {
+                case .success(_):
+                    print("friendship request canceled for userId: \(userId)")
+                case .failure(let error):
+                    print(error.localizedDescription)
             }
         }
     }

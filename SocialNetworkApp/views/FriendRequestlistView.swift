@@ -1,13 +1,13 @@
 //
-//  FriendListUIView.swift
+//  FriendRequestlistView.swift
 //  SocialNetworkApp
 //
-//  Created by Ahamad Ben on 29/05/2022.
+//  Created by Ahamad Ben on 27/10/2022.
 //
 
 import SwiftUI
 
-struct FriendListUIView: View {
+struct FriendRequestlistView: View {
     @StateObject var userViewModel: UserViewModel
     @State var searchText = ""
     var body: some View {
@@ -15,16 +15,13 @@ struct FriendListUIView: View {
             Color("color_bg").edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack(alignment: .leading, spacing: 20){
-                    if userViewModel.friends.count > 0 {
-                        ForEach(userViewModel.friends, id: \.self) { friend in
-                            NavigationLink(destination: UserPosts(postViemModel: PostViewModel(), user: friend)){
-                                UserCard(user: friend)
-                            }
-                                                
+                    if userViewModel.friendshipRequestList.count > 0 {
+                        ForEach(userViewModel.friendshipRequestList, id: \.self) { friendRequest in
+                            FriendShipRequestCard(user: friendRequest, userViewModel: userViewModel)
                         }
                     }
                     else{
-                        Text("Vous n'avez pas encore d'amis !")
+                        Text("Vous n'avez pas de demande d'amis !")
                             .font(.subheadline)
                     }
                 }
@@ -41,8 +38,8 @@ struct FriendListUIView: View {
     }
 }
 
-struct FriendListUIView_Previews: PreviewProvider {
+struct FriendRequestlistView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendListUIView(userViewModel: UserViewModel())
+        FriendRequestlistView(userViewModel: UserViewModel())
     }
 }

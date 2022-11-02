@@ -48,7 +48,6 @@ struct GroupUIView: View {
                                 if groupModelView.groupFollowers.count > 0 {
                                     ForEach(groupModelView.groupFollowers, id: \.self) { member in
                                         NavigationLink(destination: ChatUIView()){
-                                            //UserCard(user: member.user)
                                             GroupFollowerCard(follower: member)
                                         }
                                     }

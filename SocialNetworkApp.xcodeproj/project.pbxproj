@@ -58,6 +58,8 @@
 		E05B07E1286314F900206684 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B07E0286314F900206684 /* LoginManager.swift */; };
 		E05B07E32863262000206684 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B07E22863262000206684 /* SearchCard.swift */; };
 		E060384C2882FE220073B64F /* SharedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060384B2882FE220073B64F /* SharedEvent.swift */; };
+		E0642D8E28FD836800BB38DB /* FriendShipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0642D8D28FD836800BB38DB /* FriendShipList.swift */; };
+		E0642D9228FD882400BB38DB /* FriendShipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0642D9128FD882400BB38DB /* FriendShipCard.swift */; };
 		E068FDB52843AEE900665C6D /* SocialNetworkAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDB42843AEE900665C6D /* SocialNetworkAppApp.swift */; };
 		E068FDB72843AEE900665C6D /* HomeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068FDB62843AEE900665C6D /* HomeUIView.swift */; };
 		E068FDB92843AEED00665C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E068FDB82843AEED00665C6D /* Assets.xcassets */; };
@@ -77,14 +79,18 @@
 		E0746997288D93E40066D671 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746996288D93E40066D671 /* PostManager.swift */; };
 		E0746999288DBAD10066D671 /* AddCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0746998288DBAD10066D671 /* AddCommentView.swift */; };
 		E074699B288DF5620066D671 /* CommentDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E074699A288DF5620066D671 /* CommentDto.swift */; };
+		E09622772902958B000CBAA4 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09622762902958A000CBAA4 /* AddFriendView.swift */; };
 		E09E3DAD289EB1E500B3D775 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E3DAC289EB1E500B3D775 /* ImagePickerView.swift */; };
 		E09E3DAF289EB26C00B3D775 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E3DAE289EB26C00B3D775 /* Coordinator.swift */; };
 		E0BD721F285374B000A70F00 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD721E285374B000A70F00 /* WebService.swift */; };
+		E0D2D2F5290D654E00572978 /* UserPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2D2F4290D654E00572978 /* UserPosts.swift */; };
 		E0E233C5288446A200417381 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C4288446A200417381 /* EventCard.swift */; };
 		E0E233C7288455F100417381 /* EventUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C6288455F100417381 /* EventUIView.swift */; };
 		E0E233C928845CD500417381 /* userViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233C828845CD500417381 /* userViewModel.swift */; };
 		E0E233CB288481C200417381 /* likePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E233CA288481C200417381 /* likePost.swift */; };
 		E0EEA4E4288EFBA500AD8C2C /* GroupMembers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EEA4E3288EFBA500AD8C2C /* GroupMembers.swift */; };
+		E0F08070290AB20C00A241AB /* FriendRequestlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F0806F290AB20C00A241AB /* FriendRequestlistView.swift */; };
+		E0F08072290AB47100A241AB /* FriendShipRequestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F08071290AB47100A241AB /* FriendShipRequestCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +162,8 @@
 		E05B07E0286314F900206684 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		E05B07E22863262000206684 /* SearchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
 		E060384B2882FE220073B64F /* SharedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedEvent.swift; sourceTree = "<group>"; };
+		E0642D8D28FD836800BB38DB /* FriendShipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendShipList.swift; sourceTree = "<group>"; };
+		E0642D9128FD882400BB38DB /* FriendShipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendShipCard.swift; sourceTree = "<group>"; };
 		E068FDB12843AEE900665C6D /* SocialNetworkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialNetworkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E068FDB42843AEE900665C6D /* SocialNetworkAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNetworkAppApp.swift; sourceTree = "<group>"; };
 		E068FDB62843AEE900665C6D /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
@@ -178,14 +186,18 @@
 		E0746996288D93E40066D671 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		E0746998288DBAD10066D671 /* AddCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentView.swift; sourceTree = "<group>"; };
 		E074699A288DF5620066D671 /* CommentDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDto.swift; sourceTree = "<group>"; };
+		E09622762902958A000CBAA4 /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
 		E09E3DAC289EB1E500B3D775 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		E09E3DAE289EB26C00B3D775 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E0BD721E285374B000A70F00 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		E0D2D2F4290D654E00572978 /* UserPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPosts.swift; sourceTree = "<group>"; };
 		E0E233C4288446A200417381 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		E0E233C6288455F100417381 /* EventUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUIView.swift; sourceTree = "<group>"; };
 		E0E233C828845CD500417381 /* userViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userViewModel.swift; sourceTree = "<group>"; };
 		E0E233CA288481C200417381 /* likePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likePost.swift; sourceTree = "<group>"; };
 		E0EEA4E3288EFBA500AD8C2C /* GroupMembers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembers.swift; sourceTree = "<group>"; };
+		E0F0806F290AB20C00A241AB /* FriendRequestlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestlistView.swift; sourceTree = "<group>"; };
+		E0F08071290AB47100A241AB /* FriendShipRequestCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendShipRequestCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				E0568DF9284E5450003788F5 /* Friendship.swift */,
+				E0642D8D28FD836800BB38DB /* FriendShipList.swift */,
 			);
 			path = Friendship;
 			sourceTree = "<group>";
@@ -413,6 +426,8 @@
 				E0746992288D85080066D671 /* CommentCard.swift */,
 				E0137A932891709E00C9EAEE /* AccountDetailCard.swift */,
 				E04F18DB28E1B9C700B98D0B /* GroupFollowerCard.swift */,
+				E0642D9128FD882400BB38DB /* FriendShipCard.swift */,
+				E0F08071290AB47100A241AB /* FriendShipRequestCard.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -444,6 +459,9 @@
 				E09E3DAC289EB1E500B3D775 /* ImagePickerView.swift */,
 				E04F18DD28E1DC2200B98D0B /* BackgroudPhotoEditView.swift */,
 				E04F18DF28E1DC3400B98D0B /* ProfilPhotoEditView.swift */,
+				E09622762902958A000CBAA4 /* AddFriendView.swift */,
+				E0F0806F290AB20C00A241AB /* FriendRequestlistView.swift */,
+				E0D2D2F4290D654E00572978 /* UserPosts.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -594,7 +612,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0642D9228FD882400BB38DB /* FriendShipCard.swift in Sources */,
 				E021C8E4285761E900589730 /* PostViewModel.swift in Sources */,
+				E09622772902958B000CBAA4 /* AddFriendView.swift in Sources */,
 				E0544BBF28C74D68009699B4 /* CommentPost.swift in Sources */,
 				E0568DF7284E4FD2003788F5 /* Group.swift in Sources */,
 				E014CDDF2891353D001B4B13 /* AddMemberView.swift in Sources */,
@@ -617,6 +637,7 @@
 				E0448C45285C788A0072AFE8 /* postCard.swift in Sources */,
 				E0448C5E28606C1D0072AFE8 /* ChatBubbleView.swift in Sources */,
 				E0E233CB288481C200417381 /* likePost.swift in Sources */,
+				E0D2D2F5290D654E00572978 /* UserPosts.swift in Sources */,
 				E014CDDB28912C09001B4B13 /* AddPostView.swift in Sources */,
 				E0448C62286071FF0072AFE8 /* ChatUIView.swift in Sources */,
 				E05B07E1286314F900206684 /* LoginManager.swift in Sources */,
@@ -637,6 +658,7 @@
 				E05B07DA2861BDAD00206684 /* GroupListView.swift in Sources */,
 				E074699B288DF5620066D671 /* CommentDto.swift in Sources */,
 				E068FDF62843F76800665C6D /* ChatListUIView.swift in Sources */,
+				E0F08072290AB47100A241AB /* FriendShipRequestCard.swift in Sources */,
 				E068FDE62843F12600665C6D /* InscriptionUIView.swift in Sources */,
 				E0E233C7288455F100417381 /* EventUIView.swift in Sources */,
 				E0568DE1284E4498003788F5 /* User.swift in Sources */,
@@ -652,9 +674,11 @@
 				E09E3DAF289EB26C00B3D775 /* Coordinator.swift in Sources */,
 				E01FA3A728C0CD4100FC9699 /* Media.swift in Sources */,
 				E0448C4C285CB68D0072AFE8 /* SearchView.swift in Sources */,
+				E0F08070290AB20C00A241AB /* FriendRequestlistView.swift in Sources */,
 				E0E233C928845CD500417381 /* userViewModel.swift in Sources */,
 				E0448C50285CBB180072AFE8 /* OnlineUsersView.swift in Sources */,
 				E05B07D82860AAEF00206684 /* UserCard.swift in Sources */,
+				E0642D8E28FD836800BB38DB /* FriendShipList.swift in Sources */,
 				E04F18DE28E1DC2200B98D0B /* BackgroudPhotoEditView.swift in Sources */,
 				E04BEEF8287C4B3B00B708CE /* LoginViewModel.swift in Sources */,
 				E068FDF42843F75800665C6D /* GroupUIView.swift in Sources */,
@@ -835,7 +859,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -867,7 +891,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

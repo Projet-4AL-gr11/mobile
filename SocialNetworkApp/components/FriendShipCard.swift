@@ -1,15 +1,17 @@
 //
-//  UserCard.swift
+//  FriendShipCard.swift
 //  SocialNetworkApp
 //
-//  Created by Ahamad Ben on 20/06/2022.
+//  Created by Ahamad Ben on 17/10/2022.
 //
 
 import SwiftUI
 
-struct UserCard: View {
-    
-    var user: User
+struct FriendShipCard: View {
+    @State var user: User
+    var userViewModel: UserViewModel
+    @State var isFollowed: Bool = false
+    @State var text: String = "Ajouter"
     var body: some View {
         HStack{
             if user.profilePicture != nil{
@@ -32,21 +34,34 @@ struct UserCard: View {
             }
             VStack(alignment: .leading, spacing: 10){
                 Text(user.username)
-                    .foregroundColor(.black)
-                    .font(.body)
+                    .font(.title)
                     .bold()
                 Text(user.email)
-                    .foregroundColor(.black)
                     .font(.caption)
             }
             .padding()
+            Button{
+                userViewModel.followUser(userId: user.id)
+                isFollowed = !isFollowed
+                text = isFollowed ? "✅" : "Ajouter"
+            }label: {
+                Text(text)
+                    .bold()
+                    .frame(width: 70, height: 40)
+                    .cornerRadius(50)
+            
             }
+            .padding(.bottom, 50)
+    
         }
+        .shadow( radius: 10)
     }
-
-struct UserCard_Previews: PreviewProvider {
-    static var previews: some View {
-        UserCard(user: user1)
-    }
+    
+    
 }
 
+struct FriendShipCard_Previews: PreviewProvider {
+    static var previews: some View {
+        FriendShipCard(user: user1, userViewModel: UserViewModel())
+    }
+}

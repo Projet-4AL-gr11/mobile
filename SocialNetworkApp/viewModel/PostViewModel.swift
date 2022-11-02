@@ -8,6 +8,7 @@
 import Foundation
 class PostViewModel : ObservableObject {
     @Published var posts: [PostTimeLine] = []
+    @Published var friendPost: [PostTimeLine] = []
 
     
     init() {
@@ -28,6 +29,28 @@ class PostViewModel : ObservableObject {
             case .success(let post):
                 DispatchQueue.main.async {
                     self.posts = post
+                }
+            case .failure(let error):
+                print("impossible de decoder les posts")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getFriendPosts(userId: String){
+        let defaults = UserDefaults.standard
+
+        guard let token = defaults.string(forKey: "jwtToken") else {
+            print("can't get token")
+            return
+        }
+            
+        WebService.getFriendPosts(token: token, userId: userId) {result in
+            
+            switch result {
+            case .success(let post):
+                DispatchQueue.main.async {
+                    self.friendPost = post
                 }
             case .failure(let error):
                 print("impossible de decoder les posts")
